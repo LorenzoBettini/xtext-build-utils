@@ -29,7 +29,7 @@ before_install:
 # Build on MacOSX is triggered only for pull requests and merge of pull requests
 script:
  - mvn -f xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent/pom.xml clean install
- - mvn -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify $ADDITIONAL
+ - mvn -U -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify $ADDITIONAL
 
 # removes our installed artifacts before storing the cache
 before_cache:
