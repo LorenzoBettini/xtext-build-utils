@@ -1,0 +1,23 @@
+.DS_Store
+*.class
+bin/
+*~
+logs.zip
+*.orig
+*.java._trace
+*.smap
+*.log
+
+# generated sources
+src-gen/
+xtend-gen/
+
+# for Maven builds
+target
+
+# for Gradle builds
+build
+.gradle
+
+# for VS code node modules
+node_modules
