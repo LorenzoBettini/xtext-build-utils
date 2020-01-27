@@ -17,7 +17,7 @@ import org.junit.jupiter.api.^extension.ExtendWith
 class TychotestlanguageParsingTest {
 	@Inject
 	ParseHelper<Model> parseHelper
-	
+
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
