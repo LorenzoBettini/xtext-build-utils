@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: io.github.lorenzobettini.tychotestlanguage.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: io.github.lorenzobettini.tychotestlanguage.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: io.github.lorenzobettini.tychotestlanguage.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: io.github.lorenzobettini.tychotestlanguage,
+ org.junit.jupiter.api;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
