@@ -33,5 +33,5 @@ script:
 
 # removes our installed artifacts before storing the cache
 before_cache:
- - find $HOME/.m2/repository -name "*xtext-tycho-parent*" -exec rm -rf {} \+
+ - find $HOME/.m2/repository -name "*lorenzobettini*" -exec rm -rf {} \+
 
