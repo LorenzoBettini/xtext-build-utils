@@ -31,6 +31,7 @@ script:
  - mvn -f xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent/pom.xml clean install
  - mvn -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify $ADDITIONAL
 
+# removes our installed artifacts before storing the cache
 before_cache:
- - find $HOME/.m2/repository -name "*lorenzobettini*" -exec rm -rf {} \+
+ - find $HOME/.m2/repository -name "*xtext-tycho-parent*" -exec rm -rf {} \+
 
