@@ -8,5 +8,22 @@ Bundle-SymbolicName: io.github.lorenzobettini.tychotestlanguage; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0"
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: io.github.lorenzobettini.tychotestlanguage.services,
+ io.github.lorenzobettini.tychotestlanguage.tychotestlanguage.impl,
+ io.github.lorenzobettini.tychotestlanguage.tychotestlanguage,
+ io.github.lorenzobettini.tychotestlanguage.validation,
+ io.github.lorenzobettini.tychotestlanguage,
+ io.github.lorenzobettini.tychotestlanguage.serializer,
+ io.github.lorenzobettini.tychotestlanguage.parser.antlr,
+ io.github.lorenzobettini.tychotestlanguage.parser.antlr.internal,
+ io.github.lorenzobettini.tychotestlanguage.tychotestlanguage.util,
+ io.github.lorenzobettini.tychotestlanguage.scoping,
+ io.github.lorenzobettini.tychotestlanguage.generator
+Import-Package: org.apache.log4j
