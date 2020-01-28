@@ -126,6 +126,55 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<!-- configured but not enabled, see profile mwe2-launcher -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.6.0</version>
+					<executions>
+						<execution>
+							<id>mwe2Launcher</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>java</goal>
+							</goals>
+							<configuration>
+								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
+								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
+								<classpathScope>compile</classpathScope>
+								<includePluginDependencies>true</includePluginDependencies>
+								<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+							<version>${mwe2Version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>org.eclipse.xtext.common.types</artifactId>
+							<version>${xtextVersion}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+							<version>${xtextVersion}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>org.eclipse.xtext.xbase</artifactId>
+							<version>${xtextVersion}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>xtext-antlr-generator</artifactId>
+							<version>2.1.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
 					<!-- configured but not enabled, see profile xtend-compile -->
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
@@ -182,6 +231,25 @@
 											<goal>add-source</goal>
 											<goal>add-test-resource</goal>
 											<goal>add-test-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											exec-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.2.1,)
+										</versionRange>
+										<goals>
+											<goal>java</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -258,6 +326,37 @@
 			<properties>
 				<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 			</properties>
+		</profile>
+		<profile>
+			<id>mwe2-launcher</id>
+			<!-- This profile will be activated when the system property "skipMWE2" is not defined,
+				or is defined with a value which is not "true"; most of the configuration is done
+				in the default pluginManagement section above -->
+			<activation>
+				<property>
+					<name>skipMWE2</name>
+					<value>!true</value>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>exec-maven-plugin</artifactId>
+							<version>1.6.0</version>
+							<executions>
+								<execution>
+									<id>mwe2Launcher</id>
+									<configuration>
+										<skip>false</skip>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 		<profile>
 			<id>xtend-compile</id>
