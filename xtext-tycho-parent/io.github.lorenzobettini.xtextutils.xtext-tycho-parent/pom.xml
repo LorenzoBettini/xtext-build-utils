@@ -261,6 +261,8 @@
 		</profile>
 		<profile>
 			<id>xtend-compile</id>
+			<!-- This profile will be activated when the system property "skipXtend" is not defined,
+				or is defined with a value which is not "true" -->
 			<activation>
 				<property>
 					<name>skipXtend</name>
