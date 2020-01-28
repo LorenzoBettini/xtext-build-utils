@@ -10,6 +10,7 @@ logs.zip
 
 # generated sources
 src-gen/
+xtext-gen/
 xtend-gen/
 
 # for Maven builds
