@@ -126,6 +126,12 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<!-- configured but not enabled, see profile xtend-compile -->
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtextVersion}</version>
+				</plugin>
+				<plugin>
 					<!-- 
 						Can be removed after first generator execution
 						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
@@ -252,6 +258,58 @@
 			<properties>
 				<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 			</properties>
+		</profile>
+		<profile>
+			<id>xtend-compile</id>
+			<activation>
+				<property>
+					<name>skipXtend</name>
+					<value>!true</value>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.xtend</groupId>
+							<artifactId>xtend-maven-plugin</artifactId>
+							<version>${xtextVersion}</version>
+							<executions>
+								<execution>
+									<goals>
+										<goal>compile</goal>
+										<goal>xtend-install-debug-info</goal>
+										<goal>testCompile</goal>
+										<goal>xtend-test-install-debug-info</goal>
+									</goals>
+								</execution>
+							</executions>
+							<configuration>
+								<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+								<testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-clean-plugin</artifactId>
+							<version>3.1.0</version>
+							<configuration>
+								<filesets>
+									<fileset>
+										<directory>${basedir}/xtend-gen</directory>
+										<includes>
+											<include>**/*</include>
+										</includes>
+										<excludes>
+											<exclude>**/.gitignore</exclude>
+										</excludes>
+									</fileset>
+								</filesets>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 	</profiles>
 
