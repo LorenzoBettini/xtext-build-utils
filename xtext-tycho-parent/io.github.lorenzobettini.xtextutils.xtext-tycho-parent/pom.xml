@@ -2,35 +2,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.lorenzobettini.xtextutils</groupId>
+	<parent>
+		<groupId>io.github.lorenzobettini.xtextutils</groupId>
+		<artifactId>xtext-maven-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent</relativePath>
+	</parent>
 	<artifactId>xtext-tycho-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.20.0</xtextVersion>
-		<mwe2Version>2.11.1</mwe2Version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Tycho settings -->
 		<tycho-version>1.6.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
 		<systemProperties></systemProperties>
-		<additionalTestArguments></additionalTestArguments>
 	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.eclipse.xtext</groupId>
-				<artifactId>xtext-dev-bom</artifactId>
-				<version>${xtextVersion}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -126,61 +114,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<!-- configured but not enabled, see profile mwe2-launcher -->
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.6.0</version>
-					<executions>
-						<execution>
-							<id>mwe2Launcher</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>java</goal>
-							</goals>
-							<configuration>
-								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
-								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
-								<classpathScope>compile</classpathScope>
-								<includePluginDependencies>true</includePluginDependencies>
-								<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
-							</configuration>
-						</execution>
-					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>org.eclipse.emf</groupId>
-							<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-							<version>${mwe2Version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.xtext</groupId>
-							<artifactId>org.eclipse.xtext.common.types</artifactId>
-							<version>${xtextVersion}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.xtext</groupId>
-							<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-							<version>${xtextVersion}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.xtext</groupId>
-							<artifactId>org.eclipse.xtext.xbase</artifactId>
-							<version>${xtextVersion}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.eclipse.xtext</groupId>
-							<artifactId>xtext-antlr-generator</artifactId>
-							<version>2.1.1</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<plugin>
-					<!-- configured but not enabled, see profile xtend-compile -->
-					<groupId>org.eclipse.xtend</groupId>
-					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtextVersion}</version>
-				</plugin>
-				<plugin>
 					<!-- 
 						Can be removed after first generator execution
 						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
@@ -215,47 +148,6 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											build-helper-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.9.1,)
-										</versionRange>
-										<goals>
-											<goal>add-resource</goal>
-											<goal>add-source</goal>
-											<goal>add-test-resource</goal>
-											<goal>add-test-source</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											exec-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.2.1,)
-										</versionRange>
-										<goals>
-											<goal>java</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
@@ -326,37 +218,6 @@
 			<properties>
 				<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 			</properties>
-		</profile>
-		<profile>
-			<id>mwe2-launcher</id>
-			<!-- This profile will be activated when the system property "skipMWE2" is not defined,
-				or is defined with a value which is not "true"; most of the configuration is done
-				in the default pluginManagement section above -->
-			<activation>
-				<property>
-					<name>skipMWE2</name>
-					<value>!true</value>
-				</property>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>exec-maven-plugin</artifactId>
-							<version>1.6.0</version>
-							<executions>
-								<execution>
-									<id>mwe2Launcher</id>
-									<configuration>
-										<skip>false</skip>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
 		</profile>
 		<profile>
 			<id>xtend-compile</id>
