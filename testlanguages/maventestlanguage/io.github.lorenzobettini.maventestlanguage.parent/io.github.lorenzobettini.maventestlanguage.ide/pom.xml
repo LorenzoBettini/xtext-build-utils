@@ -18,15 +18,9 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<id>add-source</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>add-source</goal>
-							<goal>add-resource</goal>
-						</goals>
+						<id>add-xtext-gen-source</id>
 						<configuration>
 							<sources>
 								<source>src/main/xtext-gen</source>

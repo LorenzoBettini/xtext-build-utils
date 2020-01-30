@@ -67,6 +67,29 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>add-xtext-gen-source</id>
+							<phase>initialize</phase>
+							<goals>
+								<goal>add-source</goal>
+								<goal>add-resource</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>add-xtext-gen-test-source</id>
+							<phase>initialize</phase>
+							<goals>
+								<goal>add-test-source</goal>
+								<goal>add-test-resource</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<!-- configured but not enabled, see profile mwe2-launcher -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
