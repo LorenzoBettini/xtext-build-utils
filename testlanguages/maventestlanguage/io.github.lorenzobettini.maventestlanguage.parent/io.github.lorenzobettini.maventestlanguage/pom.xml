@@ -37,6 +37,7 @@
 				<executions>
 					<execution>
 						<id>add-xtext-gen-source</id>
+						<phase>initialize</phase>
 						<configuration>
 							<sources>
 								<source>src/main/xtext-gen</source>
@@ -54,6 +55,7 @@
 					</execution>
 					<execution>
 						<id>add-xtext-gen-test-source</id>
+						<phase>initialize</phase>
 						<configuration>
 							<sources>
 								<source>src/test/xtext-gen</source>

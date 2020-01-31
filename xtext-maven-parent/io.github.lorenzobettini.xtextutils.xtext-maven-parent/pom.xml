@@ -67,13 +67,14 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<!-- projects should bind to the phase explicitly, e.g., "initialize" -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
 					<version>3.0.0</version>
 					<executions>
 						<execution>
 							<id>add-xtext-gen-source</id>
-							<phase>initialize</phase>
+							<phase>none</phase>
 							<goals>
 								<goal>add-source</goal>
 								<goal>add-resource</goal>
@@ -81,7 +82,7 @@
 						</execution>
 						<execution>
 							<id>add-xtext-gen-test-source</id>
-							<phase>initialize</phase>
+							<phase>none</phase>
 							<goals>
 								<goal>add-test-source</goal>
 								<goal>add-test-resource</goal>
