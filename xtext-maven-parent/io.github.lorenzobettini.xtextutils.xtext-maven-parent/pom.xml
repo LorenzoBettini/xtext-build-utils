@@ -7,6 +7,41 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<name>Xtext Maven Parent</name>
+	<url>https://github.com/LorenzoBettini/xtext-build-utils</url>
+	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Lorenzo Bettini</name>
+			<email>lorenzo.bettini@gmail.com</email>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<organization>DISIA Dipartimento di Statistica, Informatica, Applicazioni</organization>
+			<organizationUrl>https://www.disia.unifi.it/</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>git@github.com:LorenzoBettini/xtext-build-utils.git</url>
+		<developerConnection>scm:git:https://github.com/LorenzoBettini/xtext-build-utils.git</developerConnection>
+		<connection>scm:git:git@github.com/LorenzoBettini/xtext-build-utils.git</connection>
+	</scm>
+
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/LorenzoBettini/xtext-build-utils/issues</url>
+	</issueManagement>
+
 	<properties>
 		<xtextVersion>2.20.0</xtextVersion>
 		<mwe2Version>2.11.1</mwe2Version>
@@ -333,4 +368,15 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 </project>

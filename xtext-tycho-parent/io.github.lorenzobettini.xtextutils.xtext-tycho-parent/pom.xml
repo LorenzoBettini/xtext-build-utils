@@ -11,6 +11,9 @@
 	<artifactId>xtext-tycho-parent</artifactId>
 	<packaging>pom</packaging>
 
+	<name>Xtext Maven/Tycho Parent</name>
+	<description>An Xtext Parent POM for building Xtext DSLs as Maven/Tycho projects.</description>
+
 	<properties>
 		<!-- Tycho settings -->
 		<tycho-version>1.6.0</tycho-version>
