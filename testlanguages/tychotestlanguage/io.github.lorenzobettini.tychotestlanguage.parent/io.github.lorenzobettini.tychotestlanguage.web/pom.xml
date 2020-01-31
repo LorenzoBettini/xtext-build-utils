@@ -44,15 +44,10 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<id>add-source</id>
+						<id>add-xtext-gen-source</id>
 						<phase>initialize</phase>
-						<goals>
-							<goal>add-source</goal>
-							<goal>add-resource</goal>
-						</goals>
 						<configuration>
 							<sources>
 								<source>src-gen</source>
