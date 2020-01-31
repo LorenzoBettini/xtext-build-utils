@@ -41,6 +41,7 @@
 						<configuration>
 							<sources>
 								<source>src/main/xtext-gen</source>
+								<source>src/main/xtend-gen</source>
 							</sources>
 							<resources>
 								<resource>
@@ -59,6 +60,7 @@
 						<configuration>
 							<sources>
 								<source>src/test/xtext-gen</source>
+								<source>src/test/xtend-gen</source>
 							</sources>
 							<resources>
 								<resource>
