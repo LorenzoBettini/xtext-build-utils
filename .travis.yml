@@ -26,6 +26,8 @@ before_install:
 script:
 # install our POMs
  - mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean install
+# run the Xbase Tycho test project
+ - mvn -U -f testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent/pom.xml clean verify $ADDITIONAL
 # run testlanguages using our POMs
  - mvn -U -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify $ADDITIONAL
 # run it again without source code generation (MWE2 and Xtend are skipped)
