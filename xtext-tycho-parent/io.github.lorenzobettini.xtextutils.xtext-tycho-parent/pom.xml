@@ -20,7 +20,6 @@
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
-		<systemProperties></systemProperties>
 	</properties>
 
 	<build>
