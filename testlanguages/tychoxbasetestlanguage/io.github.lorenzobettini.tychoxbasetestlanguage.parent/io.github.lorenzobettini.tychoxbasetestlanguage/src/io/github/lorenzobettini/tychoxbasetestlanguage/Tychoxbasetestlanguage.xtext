@@ -1,9 +1,9 @@
-grammar io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage with org.eclipse.xtext.common.Terminals
+grammar io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage with org.eclipse.xtext.xbase.Xbase
 
 generate tychoxbasetestlanguage "http://www.github.io/lorenzobettini/tychoxbasetestlanguage/Tychoxbasetestlanguage"
 
 Model:
 	greetings+=Greeting*;
-	
+
 Greeting:
-	'Hello' name=ID '!';
+	'Hello' name=ID body=XBlockExpression;
