@@ -1,0 +1,9 @@
+grammar io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage with org.eclipse.xtext.common.Terminals
+
+generate tychoxbasetestlanguage "http://www.github.io/lorenzobettini/tychoxbasetestlanguage/Tychoxbasetestlanguage"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
