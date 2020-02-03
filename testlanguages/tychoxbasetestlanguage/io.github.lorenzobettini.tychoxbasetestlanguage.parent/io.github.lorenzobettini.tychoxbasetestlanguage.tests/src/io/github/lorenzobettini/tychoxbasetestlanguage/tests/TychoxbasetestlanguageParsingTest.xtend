@@ -21,7 +21,10 @@ class TychoxbasetestlanguageParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			Hello Xtext {
+				val String s = "Hello"
+				println(s)
+			}
 		''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
