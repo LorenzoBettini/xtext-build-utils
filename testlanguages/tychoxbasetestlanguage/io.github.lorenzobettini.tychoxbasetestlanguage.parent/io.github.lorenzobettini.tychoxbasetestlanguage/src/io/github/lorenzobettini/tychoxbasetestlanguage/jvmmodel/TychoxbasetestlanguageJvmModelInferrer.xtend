@@ -45,10 +45,10 @@ class TychoxbasetestlanguageJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-	def dispatch void infer(Model element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-		element.greetings.forEach [
+	def dispatch void infer(Model model, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+		model.greetings.forEach [
 			greeting |
-			acceptor.accept(element.toClass("example." + greeting.name)) [
+			acceptor.accept(greeting.toClass("example." + greeting.name)) [
 				members += greeting.toMethod("toString", typeRef(String)) [
 					annotations += annotationRef(Override)
 					body = greeting.body
