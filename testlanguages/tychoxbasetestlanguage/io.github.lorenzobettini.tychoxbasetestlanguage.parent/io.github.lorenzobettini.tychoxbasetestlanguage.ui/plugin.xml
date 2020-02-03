@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension
+		point="org.eclipse.ui.editors">
+		<editor
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+			default="true"
+			extensions="tychoxbasetestlanguage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			matchingStrategy="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+			name="Tychoxbasetestlanguage Editor">
+		</editor>
+	</extension>
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.validate">
+		<activeWhen>
+			<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+			</reference>
+		</activeWhen>
+		</handler>
+		<!-- copy qualified name -->
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
+			<activeWhen>
+				<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+			<activeWhen>
+				<and>
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.XtextEditor.opened" />
+					<iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+			<and>
+				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+		<definition id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.XtextEditor.opened">
+			<and>
+				<reference definitionId="isXtextEditorActive"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+	</extension>
+	<extension
+			point="org.eclipse.ui.preferencePages">
+		<page
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			name="Tychoxbasetestlanguage">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+		</page>
+		<page
+			category="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.coloring"
+			name="Syntax Coloring">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+		</page>
+		<page
+			category="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.templates"
+			name="Templates">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+		</page>
+	</extension>
+	<extension
+			point="org.eclipse.ui.propertyPages">
+		<page
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			name="Tychoxbasetestlanguage">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.keywords">
+		<keyword
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"
+			label="Tychoxbasetestlanguage"/>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+	<command
+			description="Trigger expensive validation"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.validate"
+			name="Validate">
+	</command>
+	<!-- copy qualified name -->
+	<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+	</command>
+	<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+	</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			 <command
+				 commandId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.validate"
+				 style="push"
+				 tooltip="Trigger expensive validation">
+			<visibleWhen checkEnabled="false">
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</visibleWhen>
+		</command>
+		</menuContribution>
+		<!-- copy qualified name -->
+		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:edit?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<and>
+						<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			commandId="org.eclipse.xtext.ui.editor.FindReferences">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="tychoxbasetestlanguage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.contenttype"
+			name="Tychoxbasetestlanguage File"
+			priority="normal">
+		</content-type>
+	</extension>
+	<!-- adding resource factories -->
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="tychoxbasetestlanguage">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+		<resourceServiceProvider
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="tychoxbasetestlanguage">
+		</resourceServiceProvider>
+	</extension>
+	<!-- marker definitions for io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage -->
+	<extension
+			id="tychoxbasetestlanguage.check.fast"
+			name="Tychoxbasetestlanguage Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.fast"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="tychoxbasetestlanguage.check.normal"
+			name="Tychoxbasetestlanguage Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.normal"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="tychoxbasetestlanguage.check.expensive"
+			name="Tychoxbasetestlanguage Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.expensive"/>
+		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.xtext.builder.participant">
+		<participant
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="tychoxbasetestlanguage"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.compiler.preferencePage"
+			name="Compiler">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.propertyPages">
+		<page
+			category="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.compiler.propertyPage"
+			name="Compiler">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
+			<command
+				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
+				id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.OpenGeneratedCode"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
+			<activeWhen>
+				<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened" />
+			</activeWhen>
+		</handler>
+	</extension>
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- quickfix marker resolution generator for io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage -->
+	<extension
+			point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="io.github.lorenzobettini.tychoxbasetestlanguage.ui.tychoxbasetestlanguage.check.fast">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="io.github.lorenzobettini.tychoxbasetestlanguage.ui.tychoxbasetestlanguage.check.normal">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="io.github.lorenzobettini.tychoxbasetestlanguage.ui.tychoxbasetestlanguage.check.expensive">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+	</extension>
+	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.refactoring"
+			name="Refactoring">
+			<keywordReference id="io.github.lorenzobettini.tychoxbasetestlanguage.ui.keyword_Tychoxbasetestlanguage"/>
+		</page>
+	</extension>
+	<!-- Type Hierarchy  -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchyHandler"
+			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler 
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchyHandler"
+			commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy"
+				style="push"
+				tooltip="Open Type Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy"
+				style="push"
+				tooltip="Quick Type Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- Call Hierachy -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierachyHandler"
+			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierarchy">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierarchy"
+				style="push"
+				tooltip="Open Call Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.builder.smap.StratumBreakpointAdapterFactory"
+			adaptableType="io.github.lorenzobettini.tychoxbasetestlanguage.ui.editor.TychoxbasetestlanguageEditor">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+		</factory> 
+	</extension>
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage" 
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.rulerActions">
+			<action
+				label="Not Used"
+	 			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+				style="push"
+				actionID="RulerDoubleClick"
+				id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.doubleClickBreakpointAction"/>
+		</editorContribution>
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution
+			targetID="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.RulerContext"
+			id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.RulerPopupActions">
+			<action
+				label="Toggle Breakpoint"
+				class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+				menubarPath="debug"
+				id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.rulerContextMenu.toggleBreakpointAction">
+			</action>
+			<action
+				label="Not used"
+				class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
+				menubarPath="debug"
+				id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.rulerContextMenu.enableDisableBreakpointAction">
+			</action>
+			<action
+				label="Breakpoint Properties"
+				helpContextId="breakpoint_properties_action_context"
+				class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.jdt.debug.ui.actions.JavaBreakpointPropertiesRulerActionDelegate"
+				menubarPath="group.properties"
+				id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.rulerContextMenu.openBreapointPropertiesAction">
+			</action>
+		</viewerContribution>
+	</extension>
+	<!-- Introduce Local Variable Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.refactoring.ExtractVariableHandler"
+			commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- Open implementation -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.navigation.OpenImplementationHandler"
+			commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
+			<activeWhen>
+				<reference
+					definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="menu:navigate?after=open.ext4">
+			<command commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.compare.contentViewers">
+		<viewer id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.compare.contentViewers"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="tychoxbasetestlanguage">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.contenttype"
+			contentViewerId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.compare.contentViewers" />
+	</extension>
+	<extension point="org.eclipse.compare.contentMergeViewers">
+		<viewer id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.compare.contentMergeViewers"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="tychoxbasetestlanguage" label="Tychoxbasetestlanguage Compare">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.contenttype"
+			contentMergeViewerId="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.compare.contentMergeViewers" />
+	</extension>
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider id="io.github.lorenzobettini.tychoxbasetestlanguage.Tychoxbasetestlanguage.editors.documentProviders"
+			class="io.github.lorenzobettini.tychoxbasetestlanguage.ui.TychoxbasetestlanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="tychoxbasetestlanguage">
+		</provider>
+	</extension>
+	<extension point="org.eclipse.team.core.fileTypes">
+		<fileTypes
+			extension="tychoxbasetestlanguage"
+			type="text">
+		</fileTypes>
+	</extension>
+</plugin>

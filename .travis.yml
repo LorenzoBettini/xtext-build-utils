@@ -34,6 +34,8 @@ script:
  - mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify
 # run it again without source code generation (MWE2 and Xtend are skipped)
  - mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
+# run the Xbase Tycho test project
+ - mvn -f testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent/pom.xml clean verify $ADDITIONAL
 
 # removes our installed artifacts before storing the cache
 before_cache:
