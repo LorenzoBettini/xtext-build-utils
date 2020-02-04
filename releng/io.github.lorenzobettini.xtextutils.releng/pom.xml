@@ -2,10 +2,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.lorenzobettini.xtextutils</groupId>
+	<parent>
+		<groupId>io.github.lorenzobettini.xtextutils</groupId>
+		<artifactId>xtext-maven-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent</relativePath>
+	</parent>
 	<artifactId>releng</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
+	<name>Xtext Build Utils Releng</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,27 +26,10 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<!-- mvn versions:set -DgenerateBackupPoms=false -DremoveSnapshot=true -->
+					<!-- mvn versions:set -DartifactId='*' -DgenerateBackupPoms=false -DremoveSnapshot=true -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>2.7</version>
-				</plugin>
-				<!-- skip deployment of this aggregator, which is NOT the parent of anyone -->
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.7</version>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
-				</plugin>
-				<!-- skip deployment of this aggregator, which is NOT the parent of anyone -->
-				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.7</version>
-					<configuration>
-						<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -57,6 +46,7 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.8</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
