@@ -19,6 +19,12 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<!-- mvn versions:set -DgenerateBackupPoms=false -DremoveSnapshot=true -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
 				<!-- skip deployment of this aggregator, which is NOT the parent of anyone -->
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
