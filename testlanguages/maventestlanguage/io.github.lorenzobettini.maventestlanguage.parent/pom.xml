@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>xtext-maven-parent</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.2.0-SNAPSHOT</version>
 	</parent>
 	<groupId>io.github.lorenzobettini.maventestlanguage</groupId>
 	<version>1.0.0-SNAPSHOT</version>
