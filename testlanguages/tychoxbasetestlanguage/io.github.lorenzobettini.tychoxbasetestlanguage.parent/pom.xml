@@ -26,6 +26,18 @@
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</module>
 	</modules>
 
+	<profiles>
+		<profile>
+			<id>jdk12-or-newer</id>
+			<activation>
+				<jdk>[12,)</jdk>
+			</activation>
+			<modules>
+				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java14.tests</module>
+			</modules>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
