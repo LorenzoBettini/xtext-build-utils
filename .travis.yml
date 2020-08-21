@@ -1,12 +1,13 @@
 language: java
 
+# Tycho 2.0.0 requires Java 11 to run
 matrix:
   fast_finish: true
   include:
     # always build this environment
     - os: linux
       dist: xenial
-      jdk: openjdk8
+      jdk: openjdk11
       services:
       - xvfb
       env: ADDITIONAL=""
