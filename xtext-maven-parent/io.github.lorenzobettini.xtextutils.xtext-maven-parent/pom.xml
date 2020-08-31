@@ -2,50 +2,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.lorenzobettini.xtextutils</groupId>
+	<parent>
+		<groupId>io.github.lorenzobettini.xtextutils</groupId>
+		<artifactId>releng</artifactId>
+		<version>0.2.1-SNAPSHOT</version>
+		<relativePath>../../releng/io.github.lorenzobettini.xtextutils.releng</relativePath>
+	</parent>
 	<artifactId>xtext-maven-parent</artifactId>
-	<version>0.2.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Xtext Maven Parent</name>
-	<url>https://github.com/LorenzoBettini/xtext-build-utils</url>
 	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
-
-	<licenses>
-		<license>
-			<name>Eclipse Public License</name>
-			<url>http://www.eclipse.org/legal/epl-v10.html</url>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<name>Lorenzo Bettini</name>
-			<email>lorenzo.bettini@gmail.com</email>
-			<roles>
-				<role>architect</role>
-				<role>developer</role>
-			</roles>
-			<organization>DISIA Dipartimento di Statistica, Informatica, Applicazioni</organization>
-			<organizationUrl>https://www.disia.unifi.it/</organizationUrl>
-		</developer>
-	</developers>
-
-	<scm>
-		<url>git@github.com:LorenzoBettini/xtext-build-utils.git</url>
-		<developerConnection>scm:git:https://github.com/LorenzoBettini/xtext-build-utils.git</developerConnection>
-		<connection>scm:git:git@github.com/LorenzoBettini/xtext-build-utils.git</connection>
-	</scm>
-
-	<issueManagement>
-		<system>Github</system>
-		<url>https://github.com/LorenzoBettini/xtext-build-utils/issues</url>
-	</issueManagement>
 
 	<properties>
 		<xtextVersion>2.22.0</xtextVersion>
 		<mwe2Version>2.11.3</mwe2Version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -102,12 +73,6 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<!-- mvn versions:set -DartifactId='*' -DgenerateBackupPoms=false -DremoveSnapshot=true -->
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.7</version>
-				</plugin>
 				<plugin>
 					<!-- projects should bind to the phase explicitly, e.g., "initialize" -->
 					<groupId>org.codehaus.mojo</groupId>
@@ -350,96 +315,6 @@
 				</pluginManagement>
 			</build>
 		</profile>
-		<profile>
-			<id>sonatype-oss-release</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.8</version>
-						<extensions>true</extensions>
-						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.1.1</version>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<!-- Use the following configuration with Java 8 -->
-								<configuration>
-									<additionalparam>-Xdoclint:none</additionalparam>
-									<failOnError>false</failOnError>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 	</profiles>
 
-	<repositories>
-		<repository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
 </project>
