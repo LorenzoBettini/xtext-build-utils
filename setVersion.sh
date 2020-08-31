@@ -7,8 +7,7 @@ fi
 
 # It is crucial to use -N because in test projects parents have no relative path
 # and are not resolvable
-mvn -N -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml \
-	-Pupdate-versions \
+mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml \
 	versions:set \
 	-DgenerateBackupPoms=false \
 	-DnewVersion=$1
