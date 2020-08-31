@@ -53,7 +53,9 @@
 
 	<profiles>
 		<profile>
-			<!-- This is used only for updating versions also in test projects -->
+			<!-- This is used only for updating versions also in test projects
+				versions:set will scan automatically also these modules
+				even if this profile is not active -->
 			<id>update-versions</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
