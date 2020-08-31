@@ -5,6 +5,9 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-mvn -f xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent/pom.xml versions:set -DgenerateBackupPoms=false -DnewVersion=$1
+# versions:set will also scan the test projects and update them accordingly
+mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml \
+	versions:set \
+	-DgenerateBackupPoms=false \
+	-DnewVersion=$1
 
-mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml versions:update-child-modules -DgenerateBackupPoms=false

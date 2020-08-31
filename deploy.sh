@@ -1,3 +1,6 @@
 #!/bin/sh
 
-mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean package deploy -Psonatype-oss-release
+mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml \
+	-Psonatype-oss-release \
+	clean package deploy
+
