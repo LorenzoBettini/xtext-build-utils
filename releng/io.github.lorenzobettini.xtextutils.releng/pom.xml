@@ -51,19 +51,19 @@
 		<module>../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent</module>
 	</modules>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<!-- mvn versions:set -DartifactId='*' -DgenerateBackupPoms=false -DremoveSnapshot=true -->
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.7</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 	<profiles>
+		<profile>
+			<!-- This is used only for updating versions also in test projects -->
+			<id>update-versions</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent</module>
+				<module>../../testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent</module>
+				<module>../../testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent</module>
+			</modules>
+		</profile>
 		<profile>
 			<id>sonatype-oss-release</id>
 			<activation>
@@ -118,6 +118,19 @@
 			</build>
 		</profile>
 	</profiles>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- mvn versions:set -DartifactId='*' -DgenerateBackupPoms=false -DremoveSnapshot=true -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 	<repositories>
 		<repository>
