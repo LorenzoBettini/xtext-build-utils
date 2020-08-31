@@ -53,18 +53,6 @@
 
 	<profiles>
 		<profile>
-			<!-- This is used only for updating versions also in test projects -->
-			<id>update-versions</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>../../testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent</module>
-				<module>../../testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent</module>
-				<module>../../testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent</module>
-			</modules>
-		</profile>
-		<profile>
 			<id>sonatype-oss-release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
