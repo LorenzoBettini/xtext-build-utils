@@ -15,7 +15,7 @@
 	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
 
 	<properties>
-		<xtextVersion>2.22.0</xtextVersion>
+		<xtextVersion>2.23.0</xtextVersion>
 		<mwe2Version>2.11.3</mwe2Version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
