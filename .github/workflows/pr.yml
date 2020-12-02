@@ -1,0 +1,42 @@
+# This runs only on PR
+
+name: Java CI with Maven
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: ['macos-latest', 'windows-latest']
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Support longpaths
+      run: git config --system core.longpaths true
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.m2
+          !~/.m2/**/*lorenzobettini*
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Install our POMs
+      run: mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean install
+    - name: Run Tycho Test Language using our POMs
+      run: mvn -U -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify
+    - name: Run it again without source code generation (MWE2 and Xtend are skipped)
+      run: mvn -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
+    - name: Run Pure Maven Test Language using our POMs
+      run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify
+    - name: Run it again without source code generation (MWE2 and Xtend are skipped)
+      run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
+    - name: Run Xbase Tycho Language using our POMs
+      run: mvn -f testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent/pom.xml clean verify
