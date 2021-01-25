@@ -1,8 +1,13 @@
-# This runs only on PR
+# This runs only on PR or on master branch
 
 name: Java CI with Maven
 
 on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      # Push events on the main branch
+      - master
   pull_request:
 
 jobs:
