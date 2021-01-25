@@ -37,7 +37,6 @@ public class TychoxbasetestlanguageCompilerWithJavaTextBlocksTest {
 	@Inject
 	private ReflectExtensions reflectExtensions;
 
-	@SuppressWarnings("preview")
 	@Test
 	public void compileModel() throws Exception {
 		compilationTestHelper.compile("""

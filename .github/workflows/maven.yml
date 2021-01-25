@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ 11, 14 ]
+        java: [ 11, 15 ]
 
     name: Build with Java ${{ matrix.java }} on Linux
     steps:
@@ -26,7 +26,7 @@ jobs:
         path: |
           ~/.m2
           !~/.m2/**/*lorenzobettini*
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml', '**/*.target') }}
+        key: ${{ runner.os }}-m2-java-${{ matrix.java }}-${{ hashFiles('**/pom.xml', '**/*.yml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Install our POMs
       run: mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean install
