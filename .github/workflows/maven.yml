@@ -1,6 +1,6 @@
 # This always run (push and PR)
 
-name: Java CI with Maven
+name: Java CI with Maven (Linux)
 
 on:
   push:
@@ -13,6 +13,7 @@ jobs:
       matrix:
         java: [ 11, 15 ]
 
+    name: Build with Java ${{ matrix.java }} on Linux
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK ${{ matrix.java }}
@@ -25,7 +26,7 @@ jobs:
         path: |
           ~/.m2
           !~/.m2/**/*lorenzobettini*
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Install our POMs
       run: mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean install
@@ -39,4 +40,9 @@ jobs:
       run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
     - name: Run Xbase Tycho Language using our POMs
       run: xvfb-run mvn -f testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent/pom.xml clean verify
-
+    - name: Archive p2 Repositories
+      uses: actions/upload-artifact@v2
+      if: matrix.java == '11'
+      with:
+        name: p2-repositories
+        path: '**/target/repository'

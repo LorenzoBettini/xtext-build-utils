@@ -1,8 +1,13 @@
-# This runs only on PR
+# This runs only on PR or on master branch
 
-name: Java CI with Maven
+name: Java CI with Maven (macOS and Windows)
 
 on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      # Push events on the main branch
+      - master
   pull_request:
 
 jobs:
@@ -12,6 +17,7 @@ jobs:
         os: ['macos-latest', 'windows-latest']
     runs-on: ${{ matrix.os }}
 
+    name: Build on ${{ matrix.os }}
     steps:
     - name: Support longpaths
       run: git config --system core.longpaths true
@@ -26,7 +32,7 @@ jobs:
         path: |
           ~/.m2
           !~/.m2/**/*lorenzobettini*
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Install our POMs
       run: mvn -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean install
