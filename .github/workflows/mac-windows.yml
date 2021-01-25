@@ -17,6 +17,7 @@ jobs:
         os: ['macos-latest', 'windows-latest']
     runs-on: ${{ matrix.os }}
 
+    name: Build on ${{ matrix.os }}
     steps:
     - name: Support longpaths
       run: git config --system core.longpaths true
