@@ -1,6 +1,6 @@
 # This always run (push and PR)
 
-name: Java CI with Maven
+name: Java CI with Maven (Linux)
 
 on:
   push:
