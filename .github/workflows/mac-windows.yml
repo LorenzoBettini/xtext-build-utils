@@ -1,6 +1,6 @@
 # This runs only on PR or on master branch
 
-name: Java CI with Maven
+name: Java CI with Maven (macOS and Windows)
 
 on:
   push:
