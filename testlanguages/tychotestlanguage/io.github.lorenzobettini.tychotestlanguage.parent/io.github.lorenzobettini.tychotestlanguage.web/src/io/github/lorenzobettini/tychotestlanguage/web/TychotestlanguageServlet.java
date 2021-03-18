@@ -14,6 +14,7 @@ import org.eclipse.xtext.web.servlet.XtextServlet;
  */
 @WebServlet(name = "XtextServices", urlPatterns = "/xtext-service/*")
 public class TychotestlanguageServlet extends XtextServlet {
+	private static final long serialVersionUID = 1L;
 	
 	DisposableRegistry disposableRegistry;
 	

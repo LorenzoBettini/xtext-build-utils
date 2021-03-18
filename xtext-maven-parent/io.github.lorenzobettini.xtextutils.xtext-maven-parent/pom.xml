@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>releng</artifactId>
-		<version>0.4.1-SNAPSHOT</version>
+		<version>0.5.0-SNAPSHOT</version>
 		<relativePath>../../releng/io.github.lorenzobettini.xtextutils.releng</relativePath>
 	</parent>
 	<artifactId>xtext-maven-parent</artifactId>
@@ -15,8 +15,8 @@
 	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
 
 	<properties>
-		<xtextVersion>2.24.0</xtextVersion>
-		<mwe2Version>2.12.0</mwe2Version>
+		<xtextVersion>2.25.0</xtextVersion>
+		<mwe2Version>2.12.1</mwe2Version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -105,7 +105,6 @@
 					<executions>
 						<execution>
 							<id>mwe2Launcher</id>
-							<phase>generate-sources</phase>
 							<goals>
 								<goal>java</goal>
 							</goals>
