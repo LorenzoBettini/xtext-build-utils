@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>releng</artifactId>
-		<version>0.4.1-SNAPSHOT</version>
+		<version>0.5.0-SNAPSHOT</version>
 		<relativePath>../../releng/io.github.lorenzobettini.xtextutils.releng</relativePath>
 	</parent>
 	<artifactId>xtext-maven-parent</artifactId>
