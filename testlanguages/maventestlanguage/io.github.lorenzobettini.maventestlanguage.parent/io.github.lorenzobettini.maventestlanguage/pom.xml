@@ -17,6 +17,7 @@
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
+						<phase>generate-sources</phase>
 						<configuration>
 							<arguments>
 								<argument>/${project.basedir}/src/main/java/io/github/lorenzobettini/maventestlanguage/GenerateMaventestlanguage.mwe2</argument>

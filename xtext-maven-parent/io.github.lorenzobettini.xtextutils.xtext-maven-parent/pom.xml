@@ -105,7 +105,6 @@
 					<executions>
 						<execution>
 							<id>mwe2Launcher</id>
-							<phase>generate-sources</phase>
 							<goals>
 								<goal>java</goal>
 							</goals>

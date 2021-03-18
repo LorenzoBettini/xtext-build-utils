@@ -17,6 +17,7 @@
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
+						<phase>generate-sources</phase>
 						<configuration>
 							<arguments>
 								<argument>/${project.basedir}/src/io/github/lorenzobettini/tychotestlanguage/GenerateTychotestlanguage.mwe2</argument>
