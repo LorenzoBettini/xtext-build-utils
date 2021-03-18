@@ -33,7 +33,7 @@
 				<jdk>[14,)</jdk>
 			</activation>
 			<modules>
-				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java14.tests</module>
+				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests</module>
 			</modules>
 		</profile>
 	</profiles>

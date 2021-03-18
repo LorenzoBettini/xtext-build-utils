@@ -7,7 +7,7 @@
 		<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.java14.tests</artifactId>
+	<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<properties>

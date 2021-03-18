@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Automatic-Module-Name: io.github.lorenzobettini.tychoxbasetestlanguage.java14.tests
+Automatic-Module-Name: io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests
 Bundle-ManifestVersion: 2
-Bundle-Name: io.github.lorenzobettini.tychoxbasetestlanguage.java14.tests
+Bundle-Name: io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: io.github.lorenzobettini.tychoxbasetestlanguage.java14.tests; singleton:=true
+Bundle-SymbolicName: io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: io.github.lorenzobettini.tychoxbasetestlanguage,
  org.junit;bundle-version="4.12.0",
