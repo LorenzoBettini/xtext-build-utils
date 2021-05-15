@@ -18,15 +18,15 @@
 					<execution>
 						<id>mwe2Launcher</id>
 						<phase>generate-sources</phase>
+						<configuration>
+							<arguments>
+								<argument>/${project.basedir}/src/io/github/lorenzobettini/tychoxbasetestlanguage/GenerateTychoxbasetestlanguage.mwe2</argument>
+								<argument>-p</argument>
+								<argument>rootPath=/${project.basedir}/..</argument>
+							</arguments>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<arguments>
-						<argument>/${project.basedir}/src/io/github/lorenzobettini/tychoxbasetestlanguage/GenerateTychoxbasetestlanguage.mwe2</argument>
-						<argument>-p</argument>
-						<argument>rootPath=/${project.basedir}/..</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
