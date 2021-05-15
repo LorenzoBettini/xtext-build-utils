@@ -99,6 +99,10 @@
 				</plugin>
 				<plugin>
 					<!-- configured but not enabled, see profile mwe2-launcher -->
+					<!-- This relies on the property mwe2-file that is meant to be relative
+						to the project directory, e.g., something like
+						<mwe2-file>src/org/xtext/example/mydsl/GenerateMyDsl.mwe2</mwe2-file>
+						 -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>1.6.0</version>
@@ -109,6 +113,11 @@
 								<goal>java</goal>
 							</goals>
 							<configuration>
+								<arguments>
+									<argument>/${project.basedir}/${mwe2-file}</argument>
+									<argument>-p</argument>
+									<argument>rootPath=/${project.basedir}/..</argument>
+								</arguments>
 								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
 								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 								<classpathScope>compile</classpathScope>
