@@ -27,6 +27,7 @@
 		<module>io.github.lorenzobettini.tychotestlanguage.repository</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.tests</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.ui.tests</module>
+		<module>io.github.lorenzobettini.tychotestlanguage.swtbot.tests</module>
 	</modules>
 
 	<build>
