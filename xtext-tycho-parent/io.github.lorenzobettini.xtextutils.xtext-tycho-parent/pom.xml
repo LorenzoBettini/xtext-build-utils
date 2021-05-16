@@ -274,6 +274,19 @@
 				</pluginManagement>
 			</build>
 		</profile>
+		<profile>
+			<!-- Activated if the file 'ui-tests.txt' is found
+				in the base dir of a project -->
+			<id>ui-tests</id>
+			<activation>
+				<file>
+					<exists>ui-tests.txt</exists>
+				</file>
+			</activation>
+			<properties>
+				<useUIHarness>true</useUIHarness>
+			</properties>
+		</profile>
 	</profiles>
 
 	<repositories>

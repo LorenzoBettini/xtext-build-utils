@@ -10,10 +10,6 @@
 	<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<properties>
-		<useUIHarness>true</useUIHarness>
-	</properties>
-
 	<profiles>
 		<profile>
 			<id>macos</id>
