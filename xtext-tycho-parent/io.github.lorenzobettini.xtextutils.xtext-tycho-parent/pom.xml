@@ -21,6 +21,9 @@
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
 		<previewProperties></previewProperties>
+		<!-- For Tycho surefire plugin -->
+		<useUIHarness>false</useUIHarness>
+		<useUIThread>true</useUIThread>
 	</properties>
 
 	<build>
@@ -134,7 +137,8 @@
 						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
 						<argLine>${previewProperties} ${platformSystemProperties} ${systemProperties} ${moduleProperties} ${additionalTestArguments}</argLine>
 						<failIfNoTests>false</failIfNoTests>
-						<useUIHarness>false</useUIHarness>
+						<useUIHarness>${useUIHarness}</useUIHarness>
+						<useUIThread>${useUIThread}</useUIThread>
 					</configuration>
 				</plugin>
 				<plugin>
