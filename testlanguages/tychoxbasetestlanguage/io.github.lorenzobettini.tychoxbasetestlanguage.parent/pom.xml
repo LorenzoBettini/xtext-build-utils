@@ -24,6 +24,7 @@
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.target</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</module>
+		<module>io.github.lorenzobettini.tychoxbasetestlanguage.swtbot.tests</module>
 	</modules>
 
 	<profiles>
