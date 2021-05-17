@@ -10,11 +10,13 @@
 	<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.swtbot.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<properties>
-		<!-- For Tycho surefire plugin -->
+	<!-- 
 		<useUIHarness>true</useUIHarness>
 		<useUIThread>false</useUIThread>
-	</properties>
+		for Tycho surefire is activated
+		automatically thanks to the presence of the file ui-tests.txt in this
+		project
+	 -->
 
 	<profiles>
 		<profile>

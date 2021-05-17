@@ -285,6 +285,21 @@
 			</activation>
 			<properties>
 				<useUIHarness>true</useUIHarness>
+				<useUIThread>true</useUIThread>
+			</properties>
+		</profile>
+		<profile>
+			<!-- Activated if the file 'swtbot-tests.txt' is found
+				in the base dir of a project -->
+			<id>swtbot-tests</id>
+			<activation>
+				<file>
+					<exists>swtbot-tests.txt</exists>
+				</file>
+			</activation>
+			<properties>
+				<useUIHarness>true</useUIHarness>
+				<useUIThread>false</useUIThread>
 			</properties>
 		</profile>
 	</profiles>

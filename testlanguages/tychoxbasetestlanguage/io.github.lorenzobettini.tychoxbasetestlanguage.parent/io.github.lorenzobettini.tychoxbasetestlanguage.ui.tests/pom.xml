@@ -10,6 +10,13 @@
 	<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<!-- 
+		<useUIHarness>true</useUIHarness>
+		for Tycho surefire is activated
+		automatically thanks to the presence of the file ui-tests.txt in this
+		project
+	 -->
+
 	<profiles>
 		<profile>
 			<id>macos</id>
