@@ -49,7 +49,6 @@
 	<modules>
 		<module>../../xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent</module>
 		<module>../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent</module>
-		<module>../../xtext-tycho-targetplatform/io.github.lorenzobettini.xtextutils.xtext-tycho-targetplatform</module>
 	</modules>
 
 	<profiles>
