@@ -1,0 +1,9 @@
+grammar io.github.lorenzobettini.tychopomlesstestlanguage.Tychopomlesstestlanguage with org.eclipse.xtext.common.Terminals
+
+generate tychopomlesstestlanguage "http://www.github.io/lorenzobettini/tychopomlesstestlanguage/Tychopomlesstestlanguage"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
