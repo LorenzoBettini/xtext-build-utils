@@ -26,6 +26,10 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Here the xtend-maven-plugin must be declared explicitly, even
+				though it would be activated automatically by the profile "xtend-gen"
+				thanks to the presence of the directory "xtend-gen":
+				we must make sure it runs AFTER the execution of MWE2 -->
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>

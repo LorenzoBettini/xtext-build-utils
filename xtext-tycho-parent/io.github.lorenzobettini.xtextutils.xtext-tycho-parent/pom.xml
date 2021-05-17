@@ -275,6 +275,26 @@
 			</build>
 		</profile>
 		<profile>
+			<!-- Activated if the directory 'xtend-gen' is found
+				in the base dir of a project -->
+			<id>xtend-gen</id>
+			<activation>
+				<file>
+					<exists>xtend-gen</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- enabled unless another profile disables xtend-maven-plugin,
+							see profile xtend-compile -->
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>xtend-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<!-- Activated if the file 'ui-tests.txt' is found
 				in the base dir of a project -->
 			<id>ui-tests</id>
