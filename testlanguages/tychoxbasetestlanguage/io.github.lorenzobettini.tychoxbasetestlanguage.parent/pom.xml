@@ -21,7 +21,6 @@
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui</module>
-		<module>io.github.lorenzobettini.tychoxbasetestlanguage.target</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.swtbot.tests</module>
@@ -44,15 +43,6 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<configuration>
-					<target>
-						<artifact>
-							<groupId>io.github.lorenzobettini.tychoxbasetestlanguage</groupId>
-							<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.target</artifactId>
-							<version>${project.version}</version>
-						</artifact>
-					</target>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
