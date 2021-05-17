@@ -9,7 +9,4 @@
 	<artifactId>io.github.lorenzobettini.tychotestlanguage.target</artifactId>
 	<packaging>eclipse-target-definition</packaging>
 
-
-	<dependencies>
-	</dependencies>
 </project>
