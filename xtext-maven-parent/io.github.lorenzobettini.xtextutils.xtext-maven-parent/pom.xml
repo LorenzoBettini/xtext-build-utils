@@ -17,6 +17,8 @@
 	<properties>
 		<xtextVersion>2.25.0</xtextVersion>
 		<mwe2Version>2.12.1</mwe2Version>
+		<!-- overridable properties of used plugins -->
+		<build-helper-maven-plugin-version>3.2.0</build-helper-maven-plugin-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -77,7 +79,7 @@
 					<!-- projects should bind to the phase explicitly, e.g., "initialize" -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${build-helper-maven-plugin-version}</version>
 					<executions>
 						<execution>
 							<id>add-xtext-gen-source</id>
