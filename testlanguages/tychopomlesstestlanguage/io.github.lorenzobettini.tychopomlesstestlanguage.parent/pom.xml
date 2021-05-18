@@ -26,6 +26,7 @@
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.repository</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.tests</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.ui.tests</module>
+		<module>io.github.lorenzobettini.tychopomlesstestlanguage.swtbot.tests</module>
 	</modules>
 
 	<build>
