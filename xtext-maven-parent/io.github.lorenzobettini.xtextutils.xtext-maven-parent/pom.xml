@@ -17,6 +17,11 @@
 	<properties>
 		<xtextVersion>2.25.0</xtextVersion>
 		<mwe2Version>2.12.1</mwe2Version>
+		<!-- overridable properties of used plugins -->
+		<build-helper-maven-plugin-version>3.2.0</build-helper-maven-plugin-version>
+		<exec-maven-plugin-version>3.0.0</exec-maven-plugin-version>
+		<maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
+		<maven-antrun-plugin-version>3.0.0</maven-antrun-plugin-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -74,10 +79,15 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin-version}</version>
+				</plugin>
+				<plugin>
 					<!-- projects should bind to the phase explicitly, e.g., "initialize" -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${build-helper-maven-plugin-version}</version>
 					<executions>
 						<execution>
 							<id>add-xtext-gen-source</id>
@@ -101,7 +111,7 @@
 					<!-- configured but not enabled, see profile mwe2-launcher -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.6.0</version>
+					<version>${exec-maven-plugin-version}</version>
 					<executions>
 						<execution>
 							<id>mwe2Launcher</id>
@@ -154,7 +164,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.1</version>
+					<version>${maven-surefire-plugin-version}</version>
 					<configuration>
 						<argLine>${systemProperties} ${additionalTestArguments}</argLine>
 						<!-- workaround for https://issues.apache.org/jira/browse/SUREFIRE-1588 -->
@@ -211,6 +221,25 @@
 										<ignore></ignore>
 									</action>
 								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-antrun-plugin
+										</artifactId>
+										<versionRange>
+											[1.6.0,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -237,7 +266,6 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>exec-maven-plugin</artifactId>
-							<version>1.6.0</version>
 							<executions>
 								<execution>
 									<id>mwe2Launcher</id>
