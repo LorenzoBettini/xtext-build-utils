@@ -21,6 +21,7 @@
 		<build-helper-maven-plugin-version>3.2.0</build-helper-maven-plugin-version>
 		<exec-maven-plugin-version>3.0.0</exec-maven-plugin-version>
 		<maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
+		<maven-antrun-plugin-version>3.0.0</maven-antrun-plugin-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -77,6 +78,11 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin-version}</version>
+				</plugin>
 				<plugin>
 					<!-- projects should bind to the phase explicitly, e.g., "initialize" -->
 					<groupId>org.codehaus.mojo</groupId>
@@ -209,6 +215,25 @@
 										</versionRange>
 										<goals>
 											<goal>java</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-antrun-plugin
+										</artifactId>
+										<versionRange>
+											[1.6.0,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
