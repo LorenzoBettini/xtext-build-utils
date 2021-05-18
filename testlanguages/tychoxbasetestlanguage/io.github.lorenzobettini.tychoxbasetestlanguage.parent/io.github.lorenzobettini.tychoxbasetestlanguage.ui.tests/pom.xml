@@ -37,7 +37,7 @@
 										See https://www.eclipse.org/forums/index.php/t/1073366/ -->
 									<requirement>
 										<type>eclipse-plugin</type>
-										<id>org.eclipse.jdt.launching.macosx</id>
+										<id>org.eclipse.jdt.launching</id>
 										<versionRange>0.0.0</versionRange>
 									</requirement>
 								</extraRequirements>
