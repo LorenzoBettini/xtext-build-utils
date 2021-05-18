@@ -16,7 +16,7 @@
 
 	<properties>
 		<!-- Tycho settings -->
-		<tycho-version>2.2.0</tycho-version>
+		<tycho-version>2.3.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
@@ -72,7 +72,6 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<includePackedArtifacts>true</includePackedArtifacts>
 					<environments>
 						<environment>
 							<os>macosx</os>
@@ -140,6 +139,16 @@
 						<useUIHarness>${useUIHarness}</useUIHarness>
 						<useUIThread>${useUIThread}</useUIThread>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-eclipserun-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-repository-plugin</artifactId>
+					<version>${tycho-version}</version>
 				</plugin>
 				<plugin>
 					<!--This plugin's configuration is used to store Eclipse m2e settings only.
