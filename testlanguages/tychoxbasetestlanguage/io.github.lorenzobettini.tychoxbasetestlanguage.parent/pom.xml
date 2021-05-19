@@ -37,6 +37,14 @@
 				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests</module>
 			</modules>
 		</profile>
+		<!-- example of JaCoCo report, relying on the "jacoco" profile that automatically 
+			runs "prepare-agent" and sets surefire arguments accordingly. -->
+		<profile>
+			<id>jacoco</id>
+			<modules>
+				<module>io.github.lorenzobettini.tychoxbasetestlanguage.tests.report</module>
+			</modules>
+		</profile>
 	</profiles>
 
 	<build>
@@ -57,6 +65,4 @@
 		</plugins>
 	</build>
 
-	<dependencies>
-	</dependencies>
 </project>
