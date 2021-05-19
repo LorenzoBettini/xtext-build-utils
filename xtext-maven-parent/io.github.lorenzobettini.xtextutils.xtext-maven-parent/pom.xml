@@ -390,6 +390,46 @@
 			</build>
 		</profile>
 		<profile>
+			<!-- Activated if the directory 'src/main/xtend-gen' is found
+				in the base dir of a project -->
+			<id>src-main-xtend-gen</id>
+			<activation>
+				<file>
+					<exists>src/main/xtend-gen</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- enabled unless another profile disables xtend-maven-plugin,
+							see profile xtend-compile -->
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>xtend-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- Activated if the directory 'src/test/xtend-gen' is found
+				in the base dir of a project -->
+			<id>src-test-xtend-gen</id>
+			<activation>
+				<file>
+					<exists>src/test/xtend-gen</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- enabled unless another profile disables xtend-maven-plugin,
+							see profile xtend-compile -->
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>xtend-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>jacoco</id>
 			<properties>
 				<coverageTestArguments>${jacoco-agent}</coverageTestArguments>

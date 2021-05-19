@@ -26,10 +26,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- not required thanks to profiles that activate due to the
+				presence of src/main/xtend-gen and src/test/xtend-gen -->
+			<!--
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
+			-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
