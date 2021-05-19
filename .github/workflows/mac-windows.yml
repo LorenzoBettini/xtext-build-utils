@@ -53,7 +53,11 @@ jobs:
          -Pjacoco
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
       run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
-    - name: Run Xbase Tycho Language using our POMs
-      run: mvn -f testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent/pom.xml clean verify
+    - name: Run Xbase Tycho Language using our POMs (with JaCoCo)
+      run: >
+         mvn
+         -f testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent/pom.xml
+         clean verify
+         -Pjacoco
     - name: Run Tycho POMless Language using our POMs
       run: mvn -f testlanguages/tychopomlesstestlanguage/io.github.lorenzobettini.tychopomlesstestlanguage.parent/pom.xml clean verify
