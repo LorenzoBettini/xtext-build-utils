@@ -18,6 +18,11 @@
 		project
 	 -->
 
+	<properties>
+		<!-- Example: excludes JaCoCo for SWTBot tests -->
+		<coverageTestArguments></coverageTestArguments>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>macos</id>
