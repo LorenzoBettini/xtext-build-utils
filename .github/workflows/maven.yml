@@ -39,8 +39,12 @@ jobs:
       run: xvfb-run mvn -U -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
       run: xvfb-run mvn -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
-    - name: Run Pure Maven Test Language using our POMs
-      run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify
+    - name: Run Pure Maven Test Language using our POMs (with JaCoCo)
+      run: >
+         mvn
+         -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml
+         clean verify
+         -Pjacoco
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
       run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
     - name: Run Xbase Tycho Language using our POMs
