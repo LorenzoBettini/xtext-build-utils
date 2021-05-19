@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tychoxbasetestlanguage Example
+Bundle-SymbolicName: io.github.lorenzobettini.tychoxbasetestlanguage.example
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Lorenzo Bettini
+Automatic-Module-Name: io.github.lorenzobettini.tychoxbasetestlanguage.example
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.25.0"

@@ -9,6 +9,11 @@
 	<artifactId>io.github.lorenzobettini.maventestlanguage</artifactId>
 	<packaging>jar</packaging>
 
+	<properties>
+		<!-- required to run MWE2 -->
+		<mwe2-file>src/main/java/io/github/lorenzobettini/maventestlanguage/GenerateMaventestlanguage.mwe2</mwe2-file>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -18,16 +23,12 @@
 					<execution>
 						<id>mwe2Launcher</id>
 						<phase>generate-sources</phase>
-						<configuration>
-							<arguments>
-								<argument>/${project.basedir}/src/main/java/io/github/lorenzobettini/maventestlanguage/GenerateMaventestlanguage.mwe2</argument>
-								<argument>-p</argument>
-								<argument>rootPath=/${project.basedir}/..</argument>
-							</arguments>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Here the xtend-maven-plugin must be declared explicitly, even
+				though it would be activated automatically by the profiles "xtend-gen":
+				we must make sure it runs AFTER the execution of MWE2 -->
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>

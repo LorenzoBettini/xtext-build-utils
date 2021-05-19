@@ -9,18 +9,15 @@
 	<artifactId>io.github.lorenzobettini.tychotestlanguage.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<properties>
+		<useUIHarness>true</useUIHarness>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<configuration>
-					<useUIHarness>true</useUIHarness>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

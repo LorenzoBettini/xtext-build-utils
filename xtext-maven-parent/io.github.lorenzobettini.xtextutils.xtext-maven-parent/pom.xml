@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>releng</artifactId>
-		<version>0.5.0-SNAPSHOT</version>
+		<version>0.6.0-SNAPSHOT</version>
 		<relativePath>../../releng/io.github.lorenzobettini.xtextutils.releng</relativePath>
 	</parent>
 	<artifactId>xtext-maven-parent</artifactId>
@@ -22,9 +22,11 @@
 		<exec-maven-plugin-version>3.0.0</exec-maven-plugin-version>
 		<maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
 		<maven-antrun-plugin-version>3.0.0</maven-antrun-plugin-version>
+		<jacoco-maven-plugin-version>0.8.7</jacoco-maven-plugin-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
+		<coverageTestArguments></coverageTestArguments>
 	</properties>
 
 	<dependencyManagement>
@@ -109,6 +111,10 @@
 				</plugin>
 				<plugin>
 					<!-- configured but not enabled, see profile mwe2-launcher -->
+					<!-- This relies on the property mwe2-file that is meant to be relative
+						to the project directory, e.g., something like
+						<mwe2-file>src/org/xtext/example/mydsl/GenerateMyDsl.mwe2</mwe2-file>
+						 -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${exec-maven-plugin-version}</version>
@@ -119,6 +125,11 @@
 								<goal>java</goal>
 							</goals>
 							<configuration>
+								<arguments>
+									<argument>/${project.basedir}/${mwe2-file}</argument>
+									<argument>-p</argument>
+									<argument>rootPath=/${project.basedir}/..</argument>
+								</arguments>
 								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
 								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 								<classpathScope>compile</classpathScope>
@@ -166,10 +177,46 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin-version}</version>
 					<configuration>
-						<argLine>${systemProperties} ${additionalTestArguments}</argLine>
+						<argLine>${coverageTestArguments} ${systemProperties} ${additionalTestArguments}</argLine>
 						<!-- workaround for https://issues.apache.org/jira/browse/SUREFIRE-1588 -->
 						<useSystemClassLoader>false</useSystemClassLoader>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco-maven-plugin-version}</version>
+					<configuration>
+						<excludes>
+							<!-- Antlr generated Java classes -->
+							<exclude>**/antlr/**/*.class</exclude>
+							<!-- We don't have a custom serializer -->
+							<exclude>**/serializer/*.class</exclude>
+							<!-- generated files -->
+							<exclude>**/*Abstract*RuntimeModule.class</exclude>
+							<exclude>**/*StandaloneSetup*.class</exclude>
+							<exclude>**/*Abstract*Validator.class</exclude>
+							<exclude>**/*Abstract*ScopeProvider.class</exclude>
+							<exclude>**/*GrammarAccess*.class</exclude>
+							<exclude>**/*Abstract*UiModule.class</exclude>
+							<exclude>**/**ExecutableExtensionFactory.class</exclude>
+							<exclude>**/*Abstract*ProposalProvider.class</exclude>
+							<exclude>**/internal/*.class</exclude>
+							<exclude>**/*ProjectTemplateProvider.class</exclude>
+							<exclude>**/*ProjectTemplate.class</exclude>
+						</excludes>
+					</configuration>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<propertyName>jacoco-agent</propertyName>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<!--This plugin's configuration is used to store Eclipse m2e settings only.
@@ -336,6 +383,71 @@
 										</excludes>
 									</fileset>
 								</filesets>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<!-- Activated if the directory 'src/main/xtend-gen' is found
+				in the base dir of a project -->
+			<id>src-main-xtend-gen</id>
+			<activation>
+				<file>
+					<exists>src/main/xtend-gen</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- enabled unless another profile disables xtend-maven-plugin,
+							see profile xtend-compile -->
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>xtend-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- Activated if the directory 'src/test/xtend-gen' is found
+				in the base dir of a project -->
+			<id>src-test-xtend-gen</id>
+			<activation>
+				<file>
+					<exists>src/test/xtend-gen</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- enabled unless another profile disables xtend-maven-plugin,
+							see profile xtend-compile -->
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>xtend-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>jacoco</id>
+			<properties>
+				<coverageTestArguments>${jacoco-agent}</coverageTestArguments>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.xtend</groupId>
+							<artifactId>xtend-maven-plugin</artifactId>
+							<configuration>
+								<xtendAsPrimaryDebugSource>true</xtendAsPrimaryDebugSource>
 							</configuration>
 						</plugin>
 					</plugins>

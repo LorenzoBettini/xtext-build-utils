@@ -9,6 +9,11 @@
 	<artifactId>io.github.lorenzobettini.tychotestlanguage</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<properties>
+		<!-- required to run MWE2 -->
+		<mwe2-file>src/io/github/lorenzobettini/tychotestlanguage/GenerateTychotestlanguage.mwe2</mwe2-file>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -18,13 +23,6 @@
 					<execution>
 						<id>mwe2Launcher</id>
 						<phase>generate-sources</phase>
-						<configuration>
-							<arguments>
-								<argument>/${project.basedir}/src/io/github/lorenzobettini/tychotestlanguage/GenerateTychotestlanguage.mwe2</argument>
-								<argument>-p</argument>
-								<argument>rootPath=/${project.basedir}/..</argument>
-							</arguments>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

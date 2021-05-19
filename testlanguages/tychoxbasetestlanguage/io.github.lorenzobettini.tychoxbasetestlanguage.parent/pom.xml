@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>xtext-tycho-parent</artifactId>
-		<version>0.5.0-SNAPSHOT</version>
+		<version>0.6.0-SNAPSHOT</version>
 	</parent>
 	<groupId>io.github.lorenzobettini.tychoxbasetestlanguage</groupId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -24,6 +24,7 @@
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.target</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</module>
+		<module>io.github.lorenzobettini.tychoxbasetestlanguage.swtbot.tests</module>
 	</modules>
 
 	<profiles>
@@ -34,6 +35,14 @@
 			</activation>
 			<modules>
 				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests</module>
+			</modules>
+		</profile>
+		<!-- example of JaCoCo report, relying on the "jacoco" profile that automatically 
+			runs "prepare-agent" and sets surefire arguments accordingly. -->
+		<profile>
+			<id>jacoco</id>
+			<modules>
+				<module>io.github.lorenzobettini.tychoxbasetestlanguage.tests.report</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -56,6 +65,4 @@
 		</plugins>
 	</build>
 
-	<dependencies>
-	</dependencies>
 </project>

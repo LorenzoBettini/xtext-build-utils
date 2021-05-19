@@ -12,10 +12,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
@@ -25,6 +21,7 @@
 						<configuration>
 							<sources>
 								<source>src/main/xtext-gen</source>
+								<source>src/main/xtend-gen</source>
 							</sources>
 							<resources>
 								<resource>
@@ -39,6 +36,9 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- no need to enable xtend-maven-plugin
+				thanks to profiles that activate due to the
+				presence of src/main/xtend-gen and src/test/xtend-gen -->
 		</plugins>
 	</build>
 

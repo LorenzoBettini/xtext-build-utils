@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tychoxbasetestlanguage SWTBot Tests
+Bundle-SymbolicName: io.github.lorenzobettini.tychoxbasetestlanguage.swtbot.tests;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Lorenzo Bettini
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.swtbot.go,
+ io.github.lorenzobettini.tychoxbasetestlanguage.ui;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.14.0",
+ org.eclipse.ui.ide;bundle-version="3.18.100",
+ org.eclipse.xtext.ui.testing;bundle-version="2.25.0"
