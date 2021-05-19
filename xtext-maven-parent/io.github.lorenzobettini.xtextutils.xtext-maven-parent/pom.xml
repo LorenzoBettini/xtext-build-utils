@@ -22,9 +22,11 @@
 		<exec-maven-plugin-version>3.0.0</exec-maven-plugin-version>
 		<maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
 		<maven-antrun-plugin-version>3.0.0</maven-antrun-plugin-version>
+		<jacoco-maven-plugin-version>0.8.7</jacoco-maven-plugin-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
+		<coverageTestArguments></coverageTestArguments>
 	</properties>
 
 	<dependencyManagement>
@@ -175,10 +177,46 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin-version}</version>
 					<configuration>
-						<argLine>${systemProperties} ${additionalTestArguments}</argLine>
+						<argLine>${coverageTestArguments} ${systemProperties} ${additionalTestArguments}</argLine>
 						<!-- workaround for https://issues.apache.org/jira/browse/SUREFIRE-1588 -->
 						<useSystemClassLoader>false</useSystemClassLoader>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco-maven-plugin-version}</version>
+					<configuration>
+						<excludes>
+							<!-- Antlr generated Java classes -->
+							<exclude>**/antlr/**/*.class</exclude>
+							<!-- We don't have a custom serializer -->
+							<exclude>**/serializer/*.class</exclude>
+							<!-- generated files -->
+							<exclude>**/*Abstract*RuntimeModule.class</exclude>
+							<exclude>**/*StandaloneSetup*.class</exclude>
+							<exclude>**/*Abstract*Validator.class</exclude>
+							<exclude>**/*Abstract*ScopeProvider.class</exclude>
+							<exclude>**/*GrammarAccess*.class</exclude>
+							<exclude>**/*Abstract*UiModule.class</exclude>
+							<exclude>**/**ExecutableExtensionFactory.class</exclude>
+							<exclude>**/*Abstract*ProposalProvider.class</exclude>
+							<exclude>**/internal/*.class</exclude>
+							<exclude>**/*ProjectTemplateProvider.class</exclude>
+							<exclude>**/*ProjectTemplate.class</exclude>
+						</excludes>
+					</configuration>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<propertyName>jacoco-agent</propertyName>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<!--This plugin's configuration is used to store Eclipse m2e settings only.
@@ -345,6 +383,31 @@
 										</excludes>
 									</fileset>
 								</filesets>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>jacoco</id>
+			<properties>
+				<coverageTestArguments>${jacoco-agent}</coverageTestArguments>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.xtend</groupId>
+							<artifactId>xtend-maven-plugin</artifactId>
+							<configuration>
+								<xtendAsPrimaryDebugSource>true</xtendAsPrimaryDebugSource>
 							</configuration>
 						</plugin>
 					</plugins>
