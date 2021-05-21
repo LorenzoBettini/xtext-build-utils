@@ -20,8 +20,8 @@ jobs:
           - java: 16
             maven_opts: --illegal-access=permit
       fail-fast: false
-      env:
-        MAVEN_OPTS: ${{ matrix.maven_opts }}
+    env:
+      MAVEN_OPTS: ${{ matrix.maven_opts }}
 
     name: Build with Java ${{ matrix.java }} on Linux
     steps:
