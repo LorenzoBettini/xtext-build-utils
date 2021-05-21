@@ -56,7 +56,6 @@ jobs:
          -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml
          clean verify
          -DskipMWE2 -DskipXtend
-         -Pjacoco
     - name: Run Xbase Tycho Language using our POMs (with JaCoCo)
       run: >
          xvfb-run mvn
