@@ -51,7 +51,12 @@ jobs:
          clean verify
          -Pjacoco
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
-      run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
+      run: >
+         mvn
+         -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml
+         clean verify
+         -DskipMWE2 -DskipXtend
+         -Pjacoco
     - name: Run Xbase Tycho Language using our POMs (with JaCoCo)
       run: >
          xvfb-run mvn
