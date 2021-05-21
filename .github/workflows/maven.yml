@@ -18,9 +18,10 @@ jobs:
         java: [ 11, 15 ]
         include:
           - java: 16
-            env:
-              MAVEN_OPTS: --illegal-access=permit
+            maven_opts: --illegal-access=permit
       fail-fast: false
+      env:
+        MAVEN_OPTS: ${{ matrix.maven_opts }}
 
     name: Build with Java ${{ matrix.java }} on Linux
     steps:
