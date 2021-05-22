@@ -27,6 +27,7 @@
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
 		<coverageTestArguments></coverageTestArguments>
+		<surefireModuleProperties></surefireModuleProperties>
 	</properties>
 
 	<dependencyManagement>
@@ -177,7 +178,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin-version}</version>
 					<configuration>
-						<argLine>${coverageTestArguments} ${systemProperties} ${additionalTestArguments}</argLine>
+						<argLine>${surefireModuleProperties} ${coverageTestArguments} ${systemProperties} ${additionalTestArguments}</argLine>
 						<!-- workaround for https://issues.apache.org/jira/browse/SUREFIRE-1588 -->
 						<useSystemClassLoader>false</useSystemClassLoader>
 					</configuration>
@@ -296,6 +297,21 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>jdk16-or-newer</id>
+			<activation>
+				<jdk>[16,)</jdk>
+			</activation>
+			<properties>
+				<!--
+				Required to avoid errors of the shape:
+				com.google.inject.internal.util.$ComputationException: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: Could not initialize class com.google.inject.internal.cglib.core.$ReflectUtils
+				Caused by: com.google.inject.internal.util.$ComputationException: java.lang.NoClassDefFoundError: Could not initialize class com.google.inject.internal.cglib.core.$ReflectUtils
+				Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.google.inject.internal.cglib.core.$ReflectUtils
+				 -->
+				<surefireModuleProperties>--add-opens java.base/java.lang=ALL-UNNAMED</surefireModuleProperties>
+			</properties>
+		</profile>
 		<profile>
 			<id>mwe2-launcher</id>
 			<!-- This profile will be activated when the system property "skipMWE2" is not defined,

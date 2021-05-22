@@ -24,6 +24,9 @@
 		<!-- For Tycho surefire plugin -->
 		<useUIHarness>false</useUIHarness>
 		<useUIThread>true</useUIThread>
+		<!-- These additional properties, inherited from parent, are
+			also used for Tycho surefire plugin:
+			systemProperties, additionalTestArguments, coverageTestArguments> -->
 	</properties>
 
 	<build>
