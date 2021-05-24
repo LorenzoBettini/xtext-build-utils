@@ -29,13 +29,25 @@
 
 	<profiles>
 		<profile>
-			<id>jdk14-or-newer</id>
+			<id>jdk15-or-newer</id>
 			<activation>
-				<jdk>[14,)</jdk>
+				<jdk>[15,)</jdk>
 			</activation>
 			<modules>
 				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests</module>
 			</modules>
+		</profile>
+		<profile>
+			<id>jdk16-or-newer</id>
+			<activation>
+				<jdk>[16,)</jdk>
+			</activation>
+			<!-- Tycho does not yet support compilation level 16 -->
+			<!--
+			<modules>
+				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java16.tests</module>
+			</modules>
+			 -->
 		</profile>
 		<!-- example of JaCoCo report, relying on the "jacoco" profile that automatically 
 			runs "prepare-agent" and sets surefire arguments accordingly. -->

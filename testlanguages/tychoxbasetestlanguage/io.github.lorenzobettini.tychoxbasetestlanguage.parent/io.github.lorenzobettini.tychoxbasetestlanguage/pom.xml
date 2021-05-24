@@ -23,6 +23,11 @@
 					<execution>
 						<id>mwe2Launcher</id>
 						<phase>generate-sources</phase>
+						<configuration>
+							<arguments combine.children="append">
+								<argument>--add-opens java.base/java.lang=ALL-UNNAMED</argument>
+							</arguments>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

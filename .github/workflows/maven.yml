@@ -16,7 +16,12 @@ jobs:
     strategy:
       matrix:
         java: [ 11, 15 ]
+        include:
+          - java: 16
+            maven_opts: --add-opens java.base/java.lang=ALL-UNNAMED
       fail-fast: false
+    env:
+      MAVEN_OPTS: ${{ matrix.maven_opts }}
 
     name: Build with Java ${{ matrix.java }} on Linux
     steps:
@@ -46,7 +51,11 @@ jobs:
          clean verify
          -Pjacoco
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
-      run: mvn -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
+      run: >
+         mvn
+         -f testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent/pom.xml
+         clean verify
+         -DskipMWE2 -DskipXtend
     - name: Run Xbase Tycho Language using our POMs (with JaCoCo)
       run: >
          xvfb-run mvn
