@@ -261,6 +261,11 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
+							<!-- For Tycho projects we don't specify
+								testOutputDirectory to xtend-gen
+								since usually for Eclipse plug-in projects
+								tests are in their own projects (with only
+								tests) -->
 							<groupId>org.eclipse.xtend</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
 							<version>${xtextVersion}</version>
