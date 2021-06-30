@@ -264,9 +264,16 @@
 							<groupId>org.eclipse.xtend</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
 							<version>${xtextVersion}</version>
+							<executions>
+								<execution>
+									<goals>
+										<goal>compile</goal>
+										<goal>xtend-install-debug-info</goal>
+									</goals>
+								</execution>
+							</executions>
 							<configuration>
 								<outputDirectory>${basedir}/xtend-gen</outputDirectory>
-								<testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
 							</configuration>
 						</plugin>
 						<plugin>
