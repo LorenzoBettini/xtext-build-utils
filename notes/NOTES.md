@@ -1,12 +1,6 @@
-source.. = src/,\
-           src-gen/,\
-           xtend-gen/
-bin.includes = model/generated/,\
-               .,\
-               META-INF/,\
-               plugin.xml
-bin.excludes = **/*.mwe2,\
-               **/*.xtend
+In `build.properties`:
+
+```
 additional.bundles = org.eclipse.xtext.xbase,\
                      org.eclipse.xtext.common.types,\
                      org.eclipse.xtext.xtext.generator,\
@@ -19,3 +13,13 @@ additional.bundles = org.eclipse.xtext.xbase,\
                      org.apache.log4j,\
                      com.ibm.icu,\
                      de.itemis.xtext.antlr
+```
+
+In `.target`:
+
+```xml
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="de.itemis.xtext.antlr.feature.feature.group" version="2.1.1.v201405091103"/>
+<repository location="https://download.itemis.com/updates/releases/2.1.1/"/>
+</location>
+```
