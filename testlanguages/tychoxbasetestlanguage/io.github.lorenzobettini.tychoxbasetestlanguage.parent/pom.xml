@@ -19,6 +19,7 @@
 
 	<modules>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage</module>
+		<module>io.github.lorenzobettini.tychoxbasetestlanguage.maven.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.target</module>

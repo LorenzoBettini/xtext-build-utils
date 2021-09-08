@@ -1,0 +1,3 @@
+Hello MyWorld {
+	new HelloHelper().process("world".toFirstUpper)
+}
