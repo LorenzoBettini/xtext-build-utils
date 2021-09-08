@@ -21,6 +21,7 @@
 	<modules>
 		<module>io.github.lorenzobettini.maventestlanguage</module>
 		<module>io.github.lorenzobettini.maventestlanguage.ide</module>
+		<module>io.github.lorenzobettini.maventestlanguage.example</module>
 	</modules>
 
 	<profiles>

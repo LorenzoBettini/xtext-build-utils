@@ -19,6 +19,7 @@
 
 	<modules>
 		<module>io.github.lorenzobettini.tychotestlanguage</module>
+		<module>io.github.lorenzobettini.tychotestlanguage.maven.tests</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.ui</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.web</module>
