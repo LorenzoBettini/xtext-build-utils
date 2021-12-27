@@ -24,6 +24,16 @@
 		<module>io.github.lorenzobettini.maventestlanguage.example</module>
 	</modules>
 
+	<build>
+		<plugins>
+			<!-- To verify that we can run javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 	<profiles>
 		<!-- example of JaCoCo report, relying on the "jacoco" profile that automatically 
 			runs "prepare-agent" and sets surefire arguments accordingly. -->
