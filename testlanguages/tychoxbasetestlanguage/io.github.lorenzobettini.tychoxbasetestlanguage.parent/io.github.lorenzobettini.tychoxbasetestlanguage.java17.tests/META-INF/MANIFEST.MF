@@ -4,7 +4,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: io.github.lorenzobettini.tychoxbasetestlanguage.java15.tests;singleton:=true
+Bundle-SymbolicName: io.github.lorenzobettini.tychoxbasetestlanguage.java17.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: io.github.lorenzobettini.tychoxbasetestlanguage,
  org.junit;bundle-version="4.12.0",
@@ -12,5 +12,5 @@ Require-Bundle: io.github.lorenzobettini.tychoxbasetestlanguage,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.objectweb.asm;bundle-version="9.0.0";resolution:=optional
-Bundle-RequiredExecutionEnvironment: JavaSE-15
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: io.github.lorenzobettini.tychoxbasetestlanguage.tests;x-internal=true
