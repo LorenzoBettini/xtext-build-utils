@@ -15,8 +15,8 @@
 	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
 
 	<properties>
-		<xtextVersion>2.25.0</xtextVersion>
-		<mwe2Version>2.12.1</mwe2Version>
+		<xtextVersion>2.26.0</xtextVersion>
+		<mwe2Version>2.12.2</mwe2Version>
 		<!-- overridable properties of used plugins -->
 		<build-helper-maven-plugin-version>3.2.0</build-helper-maven-plugin-version>
 		<exec-maven-plugin-version>3.0.0</exec-maven-plugin-version>
