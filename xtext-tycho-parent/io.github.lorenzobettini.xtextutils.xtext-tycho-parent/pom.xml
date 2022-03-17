@@ -167,6 +167,11 @@
 					<version>${tycho-version}</version>
 				</plugin>
 				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
 					<!--This plugin's configuration is used to store Eclipse m2e settings only.
 						It has no influence on the Maven build itself. -->
 					<groupId>org.eclipse.m2e</groupId>
