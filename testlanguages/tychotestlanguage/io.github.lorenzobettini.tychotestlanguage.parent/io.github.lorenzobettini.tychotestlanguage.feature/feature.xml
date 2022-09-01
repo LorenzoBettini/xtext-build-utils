@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="io.github.lorenzobettini.tychotestlanguage.feature"
-	label="Tychotestlanguage Feature "
-	version="1.0.0.qualifier">
-	<plugin
-			id="io.github.lorenzobettini.tychotestlanguage"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="io.github.lorenzobettini.tychotestlanguage.ide"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="io.github.lorenzobettini.tychotestlanguage.ui"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
+<feature
+      id="io.github.lorenzobettini.tychotestlanguage.feature"
+      label="Tychotestlanguage Feature "
+      version="1.0.0.qualifier">
+
+   <requires>
+      <import plugin="com.google.inject"/>
+      <import feature="org.eclipse.emf.common" version="2.26.0.v20220325-0806"/>
+   </requires>
+
+   <plugin
+         id="io.github.lorenzobettini.tychotestlanguage"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="io.github.lorenzobettini.tychotestlanguage.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="io.github.lorenzobettini.tychotestlanguage.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
