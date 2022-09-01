@@ -24,6 +24,7 @@
 			<repository location="https://download.itemis.com/updates/releases/2.1.1/"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.apiguardian" version="0.0.0"/>
 			<unit id="org.junit.jupiter.api" version="0.0.0"/>
 			<unit id="org.junit.jupiter.engine" version="0.0.0"/>
 			<unit id="org.junit.jupiter.migrationsupport" version="0.0.0"/>
