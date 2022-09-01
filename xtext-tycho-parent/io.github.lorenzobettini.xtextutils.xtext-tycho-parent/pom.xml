@@ -14,9 +14,16 @@
 	<name>Xtext Maven/Tycho Parent</name>
 	<description>An Xtext Parent POM for building Xtext DSLs as Maven/Tycho projects.</description>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>tycho-snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<properties>
 		<!-- Tycho settings -->
-		<tycho-version>2.7.4</tycho-version>
+		<tycho-version>2.7.5-SNAPSHOT</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
