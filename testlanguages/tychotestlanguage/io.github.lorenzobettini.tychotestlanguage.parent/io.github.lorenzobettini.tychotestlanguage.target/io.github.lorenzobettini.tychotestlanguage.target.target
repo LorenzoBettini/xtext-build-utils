@@ -20,6 +20,7 @@
 			<unit id="org.junit.platform.engine" version="0.0.0"/>
 			<unit id="org.junit.platform.launcher" version="0.0.0"/>
 			<unit id="org.junit.platform.runner" version="0.0.0"/>
+			<unit id="org.junit.platform.suite.api" version="0.0.0"/>
 			<unit id="org.junit.platform.suite.commons" version="0.0.0"/>
 			<unit id="org.junit.vintage.engine" version="0.0.0"/>
 			<repository location="https://download.eclipse.org/tools/orbit/downloads/2022-09"/>
