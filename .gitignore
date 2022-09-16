@@ -8,6 +8,9 @@ logs.zip
 *.smap
 *.log
 
+# POMless projects
+.polyglot.*
+
 # generated sources
 src-gen/
 xtext-gen/
