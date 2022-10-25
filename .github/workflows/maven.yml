@@ -40,5 +40,12 @@ jobs:
         mvn
         -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
         -Pjacoco,testlanguages
+        -Dtycho.mode=maven
         dependency:go-offline
+    - name: Download p2 dependencies
+      run: >
+        mvn
+        -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
+        -Pjacoco,testlanguages
+        validate
 
