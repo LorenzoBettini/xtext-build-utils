@@ -202,6 +202,32 @@
 
 	<profiles>
 		<profile>
+			<!--
+			To execute tycho-compiler-plugin:validate-classpath
+			for validation of the classpath is desired before the compile-phase
+			(useful to cache artifacts in GitHub Actions)
+			https://tycho.eclipseprojects.io/doc/latest/tycho-compiler-plugin/validate-classpath-mojo.html
+			-->
+			<id>validate-classpath</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-compiler-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>validate-classpath</id>
+								<goals>
+									<goal>validate-classpath</goal>
+								</goals>
+								<phase>validate</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>macos</id>
 			<activation>
 				<os>

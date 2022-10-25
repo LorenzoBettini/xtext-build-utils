@@ -4,7 +4,7 @@
     <stringAttribute key="M2_GOALS" value="validate"/>
     <booleanAttribute key="M2_NON_RECURSIVE" value="false"/>
     <booleanAttribute key="M2_OFFLINE" value="false"/>
-    <stringAttribute key="M2_PROFILES" value="testlanguages"/>
+    <stringAttribute key="M2_PROFILES" value="testlanguages,validate-classpath"/>
     <listAttribute key="M2_PROPERTIES"/>
     <stringAttribute key="M2_RUNTIME" value="EMBEDDED"/>
     <booleanAttribute key="M2_SKIP_TESTS" value="false"/>
