@@ -57,6 +57,7 @@ jobs:
         validate
 
   build:
+    needs: cache-dependencies
     strategy:
       matrix:
         os: ['macos-latest', 'windows-latest']
