@@ -73,6 +73,20 @@
 			</modules>
 		</profile>
 		<profile>
+			<!-- Don't run a build with this profile explicitly, unless the parent artifacts
+				xtext-tycho-parent and xtext-maven-parent have already been installed locally:
+				the parents of test projects do NOT use parent.relativePath.
+				
+				Skip the pomless example because we don't have .mvn in this project
+				(maybe we could add it?) -->
+			<id>testlanguages</id>
+			<modules>
+				<module>../../testlanguages/maventestlanguage/io.github.lorenzobettini.maventestlanguage.parent</module>
+				<module>../../testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent</module>
+				<module>../../testlanguages/tychoxbasetestlanguage/io.github.lorenzobettini.tychoxbasetestlanguage.parent</module>
+			</modules>
+		</profile>
+		<profile>
 			<id>sonatype-oss-release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
