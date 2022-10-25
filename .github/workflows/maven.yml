@@ -11,7 +11,32 @@ on:
      - 'README.md'
 
 jobs:
+  cache-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.5.0
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3.6.0
+      with:
+        java-version: 11
+        distribution: adopt
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml', '**/*.target') }}
+        # perfect match for the cache key:
+        # if a POM changes we start with a brand new cache
+    - name: Download Maven dependencies
+      run: >
+        mvn
+          -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
+          -Pjacoco,update-versions
+          dependency:go-offline
+
   build:
+    needs: cache-dependencies
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,13 +53,14 @@ jobs:
 
     name: Build with Java ${{ matrix.java }} on Linux
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.5.0
     - name: Set up JDK ${{ matrix.java }}
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v3.6.0
       with:
         java-version: ${{ matrix.java }}
+        distribution: adopt
     - name: Cache Maven packages
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ~/.m2
