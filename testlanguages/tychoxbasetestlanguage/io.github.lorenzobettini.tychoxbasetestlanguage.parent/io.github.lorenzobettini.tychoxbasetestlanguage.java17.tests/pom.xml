@@ -11,8 +11,8 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<properties>
-		<maven.compiler.source>15</maven.compiler.source>
-		<maven.compiler.target>15</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<build>
@@ -27,7 +27,7 @@
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 				<configuration>
-					<javaSourceVersion>8</javaSourceVersion>
+					<javaSourceVersion>11</javaSourceVersion>
 				</configuration>
 			</plugin>
 		</plugins>
