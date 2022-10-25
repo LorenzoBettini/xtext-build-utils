@@ -56,7 +56,11 @@
 		<profile>
 			<!-- This is used only for updating versions also in test projects
 				versions:set will scan automatically also these modules
-				even if this profile is not active -->
+				even if this profile is not active.
+				
+				Don't run a build with this profile explicitly, unless the parent artifacts
+				xtext-tycho-parent and xtext-maven-parent have already been installed locally:
+				the parents of test projects do NOT use parent.relativePath -->
 			<id>update-versions</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
