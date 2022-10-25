@@ -24,10 +24,17 @@ jobs:
     - name: Cache Maven packages
       uses: actions/cache@v3
       with:
-        path: ~/.m2
+        path: |
+          ~/.m2
+          !~/.m2/**/*lorenzobettini*
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml', '**/*.target') }}
         # perfect match for the cache key:
         # if a POM changes we start with a brand new cache
+    - name: Install our POMs
+      run: >
+        mvn
+        -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
+        install
     - name: Download Maven dependencies
       run: >
         mvn
