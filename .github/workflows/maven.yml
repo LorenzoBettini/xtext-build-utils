@@ -31,7 +31,7 @@ jobs:
     - name: Download Maven dependencies
       run: >
         mvn
-          -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
-          -Pjacoco,update-versions
-          dependency:go-offline
+        -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
+        -Pjacoco,update-versions
+        dependency:go-offline
 
