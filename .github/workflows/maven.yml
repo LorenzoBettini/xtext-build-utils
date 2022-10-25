@@ -32,6 +32,6 @@ jobs:
       run: >
         mvn
         -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml
-        -Pjacoco
+        -Pjacoco,testlanguages
         dependency:go-offline
 
