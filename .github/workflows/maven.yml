@@ -55,11 +55,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ 11, 16, 17 ]
+        java: [ 11, 17 ]
 # This is not requested anymore, thanks to Google Guice 5
 #        include:
-#          - java: 16
-#            maven_opts: --add-opens java.base/java.lang=ALL-UNNAMED
 #          - java: 17
 #            maven_opts: --add-opens java.base/java.lang=ALL-UNNAMED
       fail-fast: false
