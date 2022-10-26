@@ -38,16 +38,6 @@
 				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java17.tests</module>
 			</modules>
 		</profile>
-		<profile>
-			<id>jdk16-or-newer</id>
-			<activation>
-				<jdk>[16,)</jdk>
-			</activation>
-			<!-- Tycho 2.4.0 does support compilation level 16 -->
-			<modules>
-				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java16.tests</module>
-			</modules>
-		</profile>
 		<!-- example of JaCoCo report, relying on the "jacoco" profile that automatically 
 			runs "prepare-agent" and sets surefire arguments accordingly. -->
 		<profile>
