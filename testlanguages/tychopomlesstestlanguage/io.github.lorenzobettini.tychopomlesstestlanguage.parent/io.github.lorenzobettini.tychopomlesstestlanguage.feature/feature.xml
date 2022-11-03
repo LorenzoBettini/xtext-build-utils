@@ -6,7 +6,7 @@
 
    <requires>
       <import plugin="com.google.inject"/>
-      <import feature="org.eclipse.emf.common" version="2.26.0.v20220325-0806"/>
+      <import feature="de.itemis.xtext.antlr.feature" version="2.1.1.v201405091103"/>
    </requires>
 
    <plugin
