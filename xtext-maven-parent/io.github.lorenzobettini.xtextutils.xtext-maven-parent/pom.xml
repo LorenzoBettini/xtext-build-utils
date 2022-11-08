@@ -25,6 +25,9 @@
 		<maven-resources-plugin-version>3.2.0</maven-resources-plugin-version>
 		<maven-clean-plugin-version>3.2.0</maven-clean-plugin-version>
 		<jacoco-maven-plugin-version>0.8.7</jacoco-maven-plugin-version>
+		<!-- forced pinned version of eclipse dependencies -->
+		<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
+		<emf-ecore-version>2.20.0</emf-ecore-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -76,20 +79,6 @@
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.xbase.ide</artifactId>
 				<version>${xtextVersion}</version>
-			</dependency>
-			<!--
-				The xtext-dev-bom specifies
-				org.eclipse.emf:org.eclipse.emf.common:2.17.0
-				but that's too old when used by recent versions of emf.ecore:
-				during the exec-maven-plugin we get this error
-				java.lang.NoSuchFieldError: IS_OSGI_RUNNING
-				(the field was introduced in EMF 2.26)
-				Forcing the version fixes the problem.
-			-->
-			<dependency>
-				<groupId>org.eclipse.emf</groupId>
-				<artifactId>org.eclipse.emf.common</artifactId>
-				<version>2.26.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -160,12 +149,19 @@
 								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
 								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 								<classpathScope>compile</classpathScope>
-								<!-- we don't use includePluginDependencies since Tycho 2.4.0
-									handles additional.bundles in build.properties correctly -->
+								<includePluginDependencies>true</includePluginDependencies>
 								<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 							</configuration>
 						</execution>
 					</executions>
+					<dependencies>
+						<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
+						<dependency>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>org.eclipse.emf.ecore</artifactId>
+							<version>${emf-ecore-version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<!-- configured but not enabled, see profile xtend-compile -->
@@ -178,19 +174,11 @@
 					<artifactId>xtext-maven-plugin</artifactId>
 					<version>${xtextVersion}</version>
 					<dependencies>
-						<!--
-							The xtext-dev-bom specifies
-							org.eclipse.emf:org.eclipse.emf.common:2.17.0
-							but that's too old when used by recent versions of emf.ecore:
-							during the exec-maven-plugin we get this error
-							java.lang.NoSuchFieldError: IS_OSGI_RUNNING
-							(the field was introduced in EMF 2.26)
-							Forcing the version fixes the problem.
-						-->
+						<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
 						<dependency>
 							<groupId>org.eclipse.emf</groupId>
-							<artifactId>org.eclipse.emf.common</artifactId>
-							<version>2.26.0</version>
+							<artifactId>org.eclipse.emf.ecore</artifactId>
+							<version>${emf-ecore-version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
