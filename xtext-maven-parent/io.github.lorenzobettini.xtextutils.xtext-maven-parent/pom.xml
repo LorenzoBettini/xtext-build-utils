@@ -146,12 +146,19 @@
 								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
 								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 								<classpathScope>compile</classpathScope>
-								<!-- we don't use includePluginDependencies since Tycho 2.4.0
-									handles additional.bundles in build.properties correctly -->
+								<includePluginDependencies>true</includePluginDependencies>
 								<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 							</configuration>
 						</execution>
 					</executions>
+					<dependencies>
+						<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
+						<dependency>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+							<version>${xtextVersion}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<!-- configured but not enabled, see profile xtend-compile -->
@@ -163,6 +170,14 @@
 					<groupId>org.eclipse.xtext</groupId>
 					<artifactId>xtext-maven-plugin</artifactId>
 					<version>${xtextVersion}</version>
+					<dependencies>
+						<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
+						<dependency>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>org.eclipse.emf.ecore</artifactId>
+							<version>2.20.0</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
