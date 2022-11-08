@@ -25,6 +25,9 @@
 		<maven-resources-plugin-version>3.2.0</maven-resources-plugin-version>
 		<maven-clean-plugin-version>3.2.0</maven-clean-plugin-version>
 		<jacoco-maven-plugin-version>0.8.7</jacoco-maven-plugin-version>
+		<!-- forced pinned version of eclipse dependencies -->
+		<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
+		<emf-ecore-version>2.20.0</emf-ecore-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>
@@ -154,9 +157,9 @@
 					<dependencies>
 						<!-- see https://github.com/eclipse/xtext-core/issues/2000 -->
 						<dependency>
-							<groupId>org.eclipse.xtext</groupId>
-							<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-							<version>${xtextVersion}</version>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>org.eclipse.emf.ecore</artifactId>
+							<version>${emf-ecore-version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -175,7 +178,7 @@
 						<dependency>
 							<groupId>org.eclipse.emf</groupId>
 							<artifactId>org.eclipse.emf.ecore</artifactId>
-							<version>2.20.0</version>
+							<version>${emf-ecore-version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
