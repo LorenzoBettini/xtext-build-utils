@@ -48,6 +48,7 @@
 	</properties>
 
 	<modules>
+		<module>../../xtext-maven-pinned/io.github.lorenzobettini.xtextutils.xtext-maven-pinned</module>
 		<module>../../xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent</module>
 		<module>../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent</module>
 	</modules>
