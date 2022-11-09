@@ -15,7 +15,7 @@
 	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
 
 	<properties>
-		<xtextVersion>2.29.0.M2</xtextVersion>
+		<xtextVersion>2.29.0-SNAPSHOT</xtextVersion>
 		<mwe2Version>2.13.0</mwe2Version>
 		<!-- overridable properties of used plugins -->
 		<build-helper-maven-plugin-version>3.2.0</build-helper-maven-plugin-version>
@@ -68,7 +68,7 @@
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-				<version>2.29.0-SNAPSHOT</version>
+				<version>${xtextVersion}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
@@ -530,6 +530,39 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>custom-xtext-maven</id>
+			<name>Custom Xtext Maven</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>custom-xtext-xtend</id>
+			<name>Custom Xtext Xtend</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>custom-xtext-extras</id>
+			<name>Custom Xtext Extras</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>custom-xtext-lib</id>
 			<name>Custom Xtext Lib</name>
 			<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
@@ -576,9 +609,42 @@
 			</snapshots>
 		</pluginRepository>
 		<pluginRepository>
-			<id>custom-xtext</id>
-			<name>Custom Xtext</name>
+			<id>custom-xtext-core</id>
+			<name>Custom Xtext Core</name>
 			<url>https://ci.eclipse.org/xtext/job/xtext-core/job/lb_issue2000_emf_pinned_deps/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>custom-xtext-maven</id>
+			<name>Custom Xtext Maven</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>custom-xtext-xtend</id>
+			<name>Custom Xtext Xtend</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>custom-xtext-extras</id>
+			<name>Custom Xtext Extras</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
