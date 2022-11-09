@@ -12,10 +12,6 @@
 	<name>Xtext Maven Pinned</name>
 	<description>An Xtext POM for pinning a few crucial Eclipse dependencies.</description>
 
-	<properties>
-		<xtextVersion>2.29.0.M2</xtextVersion>
-	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
