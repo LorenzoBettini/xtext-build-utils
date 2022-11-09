@@ -555,6 +555,17 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>custom-xtext-web</id>
+			<name>Custom Xtext Web</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-web/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>custom-xtext-lib</id>
 			<name>Custom Xtext Lib</name>
 			<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
@@ -637,6 +648,17 @@
 			<id>custom-xtext-extras</id>
 			<name>Custom Xtext Extras</name>
 			<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>custom-xtext-web</id>
+			<name>Custom Xtext Web</name>
+			<url>https://ci.eclipse.org/xtext/job/xtext-web/job/master/lastSuccessfulBuild/artifact/build/maven-repository/</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
