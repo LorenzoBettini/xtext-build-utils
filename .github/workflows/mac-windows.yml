@@ -40,7 +40,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2-
         # hashFiles('**/pom.xml', '**/maven.yml', '**/*.target') might be too much
-        # just the .target files should be enough to invalidate the cache
+        # just the .target files are not enough to invalidate the cache
     - name: Install our POMs
       run: >
         mvn
