@@ -45,7 +45,21 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<nexus-staging-url>https://s01.oss.sonatype.org/</nexus-staging-url>
+		<xtextVersion>2.29.0.M2</xtextVersion>
+		<mwe2Version>2.13.0</mwe2Version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-dev-bom</artifactId>
+				<version>${xtextVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<modules>
 		<module>../../xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent</module>
@@ -118,6 +132,158 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<!-- This profile enables Maven snapshot repositories corresponding to
+				Xtext Jenkins latest successful builds. The repositories default to
+				master branch, but the branch can be configured with properties -->
+			<id>useJenkinsShapshots</id>
+			<properties>
+				<xtextVersion>2.29.0.M2</xtextVersion>
+				<mwe2Version>2.13.0</mwe2Version>
+				<jenkins-xtext-core-branch>master</jenkins-xtext-core-branch>
+				<jenkins-xtext-maven-branch>master</jenkins-xtext-maven-branch>
+				<jenkins-xtext-xtend-branch>master</jenkins-xtext-xtend-branch>
+				<jenkins-xtext-extras-branch>master</jenkins-xtext-extras-branch>
+				<jenkins-xtext-web-branch>master</jenkins-xtext-web-branch>
+				<jenkins-xtext-lib-branch>master</jenkins-xtext-lib-branch>
+			</properties>
+			<repositories>
+				<repository>
+					<id>custom-xtext-core</id>
+					<name>Custom Xtext Core</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-core/job/${jenkins-xtext-core-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-maven</id>
+					<name>Custom Xtext Maven</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/${jenkins-xtext-maven-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-xtend</id>
+					<name>Custom Xtext Xtend</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/${jenkins-xtext-xtend-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-extras</id>
+					<name>Custom Xtext Extras</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/${jenkins-xtext-extras-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-web</id>
+					<name>Custom Xtext Web</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-web/job/${jenkins-xtext-web-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-lib</id>
+					<name>Custom Xtext Lib</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>custom-xtext-core</id>
+					<name>Custom Xtext Core</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-core/job/${jenkins-xtext-core-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-maven</id>
+					<name>Custom Xtext Maven</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/${jenkins-xtext-maven-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-xtend</id>
+					<name>Custom Xtext Xtend</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/${jenkins-xtext-xtend-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-extras</id>
+					<name>Custom Xtext Extras</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/${jenkins-xtext-extras-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-web</id>
+					<name>Custom Xtext Web</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-web/job/${jenkins-xtext-web-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-lib</id>
+					<name>Custom Xtext Lib</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
 	</profiles>
 
 	<build>
@@ -166,11 +332,48 @@
 		</pluginManagement>
 	</build>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
 			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
 			<url>http://nexus.codehaus.org/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- This must be disabled explicitly, otherwise it is enabled by https://github.com/mojohaus/mojo-parent 
+			which is taken from exec-maven-plugin from at least version 1.6.0 -->
+		<repository>
+			<id>ossrh-snapshots</id>
+			<name>ossrh-snapshots</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<!-- This is enabled by /org/sonatype/oss/oss-parent/7 used as parent by 
+			org/xtext/antlr-generator/3.2.1 -->
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
@@ -191,16 +394,27 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+			<id>ossrh-snapshots</id>
+			<name>ossrh-snapshots</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
 	</pluginRepositories>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
 </project>
