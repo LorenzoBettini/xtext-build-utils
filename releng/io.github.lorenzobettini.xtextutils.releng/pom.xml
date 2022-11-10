@@ -137,8 +137,15 @@
 				Xtext Jenkins latest successful builds. The repositories default to
 				master branch, but the branch can be configured with properties -->
 			<id>useJenkinsShapshots</id>
+			<activation>
+				<!-- Activated when the system property "SKIP-MILESTONES" is not defined at
+					all, thus, implicitly active by default -->
+				<property>
+					<name>!SKIP-MILESTONES</name>
+				</property>
+			</activation>
 			<properties>
-				<xtextVersion>2.29.0.M2</xtextVersion>
+				<xtextVersion>2.29.0-SNAPSHOT</xtextVersion>
 				<mwe2Version>2.13.0</mwe2Version>
 				<jenkins-xtext-core-branch>master</jenkins-xtext-core-branch>
 				<jenkins-xtext-maven-branch>master</jenkins-xtext-maven-branch>
