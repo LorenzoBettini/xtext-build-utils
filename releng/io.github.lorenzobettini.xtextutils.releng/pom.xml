@@ -132,6 +132,156 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<!-- This profile enables Maven snapshot repositories corresponding to
+				Xtext Jenkins latest successful builds. The repositories default to
+				master branch, but the branch can be configured with properties -->
+			<id>useJenkinsShapshots</id>
+			<properties>
+				<jenkins-xtext-core-branch>master</jenkins-xtext-core-branch>
+				<jenkins-xtext-maven-branch>master</jenkins-xtext-maven-branch>
+				<jenkins-xtext-xtend-branch>master</jenkins-xtext-xtend-branch>
+				<jenkins-xtext-extras-branch>master</jenkins-xtext-extras-branch>
+				<jenkins-xtext-web-branch>master</jenkins-xtext-web-branch>
+				<jenkins-xtext-lib-branch>master</jenkins-xtext-lib-branch>
+			</properties>
+			<repositories>
+				<repository>
+					<id>custom-xtext-core</id>
+					<name>Custom Xtext Core</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-core/job/${jenkins-xtext-core-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-maven</id>
+					<name>Custom Xtext Maven</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/${jenkins-xtext-maven-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-xtend</id>
+					<name>Custom Xtext Xtend</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/${jenkins-xtext-xtend-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-extras</id>
+					<name>Custom Xtext Extras</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/${jenkins-xtext-extras-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-web</id>
+					<name>Custom Xtext Web</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-web/job/${jenkins-xtext-web-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>custom-xtext-lib</id>
+					<name>Custom Xtext Lib</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>custom-xtext-core</id>
+					<name>Custom Xtext Core</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-core/job/${jenkins-xtext-core-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-maven</id>
+					<name>Custom Xtext Maven</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/${jenkins-xtext-maven-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-xtend</id>
+					<name>Custom Xtext Xtend</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/${jenkins-xtext-xtend-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-extras</id>
+					<name>Custom Xtext Extras</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/${jenkins-xtext-extras-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-web</id>
+					<name>Custom Xtext Web</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-web/job/${jenkins-xtext-web-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-xtext-lib</id>
+					<name>Custom Xtext Lib</name>
+					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
 	</profiles>
 
 	<build>
