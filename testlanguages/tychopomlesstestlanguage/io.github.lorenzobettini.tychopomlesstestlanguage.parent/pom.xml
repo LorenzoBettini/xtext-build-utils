@@ -21,7 +21,6 @@
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.ui</module>
-		<module>io.github.lorenzobettini.tychopomlesstestlanguage.target</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.feature</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.repository</module>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage.tests</module>
@@ -36,11 +35,11 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<target>
-						<artifact>
-							<groupId>io.github.lorenzobettini.tychopomlesstestlanguage</groupId>
-							<artifactId>io.github.lorenzobettini.tychopomlesstestlanguage.target</artifactId>
-							<version>${project.version}</version>
-						</artifact>
+						<!-- Remember: this will be evaluated in the children projects 
+							so the relative path should be specified according to the children projects-->
+						<file>
+							${project.basedir}/../../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.targetplatform/io.github.lorenzobettini.xtextutils.targetplatform.target
+						</file>
 					</target>
 				</configuration>
 			</plugin>
