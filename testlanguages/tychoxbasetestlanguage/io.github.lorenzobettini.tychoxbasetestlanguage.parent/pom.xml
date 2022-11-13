@@ -22,7 +22,6 @@
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.maven.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui</module>
-		<module>io.github.lorenzobettini.tychoxbasetestlanguage.target</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests</module>
 		<module>io.github.lorenzobettini.tychoxbasetestlanguage.swtbot.tests</module>
@@ -55,11 +54,11 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<target>
-						<artifact>
-							<groupId>io.github.lorenzobettini.tychoxbasetestlanguage</groupId>
-							<artifactId>io.github.lorenzobettini.tychoxbasetestlanguage.target</artifactId>
-							<version>${project.version}</version>
-						</artifact>
+						<!-- Remember: this will be evaluated in the children projects 
+							so the relative path should be specified according to the children projects-->
+						<file>
+							${project.basedir}/../../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.targetplatform/io.github.lorenzobettini.xtextutils.targetplatform.target
+						</file>
 					</target>
 				</configuration>
 			</plugin>
