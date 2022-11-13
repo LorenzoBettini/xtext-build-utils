@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
@@ -23,7 +22,6 @@
 		<module>io.github.lorenzobettini.tychotestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.ui</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.web</module>
-		<module>io.github.lorenzobettini.tychotestlanguage.target</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.feature</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.repository</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.tests</module>
@@ -38,11 +36,9 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<target>
-						<artifact>
-							<groupId>io.github.lorenzobettini.tychotestlanguage</groupId>
-							<artifactId>io.github.lorenzobettini.tychotestlanguage.target</artifactId>
-							<version>${project.version}</version>
-						</artifact>
+						<file>
+							${project.basedir}/../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.targetplatform/io.github.lorenzobettini.xtextutils.targetplatform.target
+						</file>
 					</target>
 				</configuration>
 			</plugin>
