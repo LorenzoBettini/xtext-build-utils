@@ -36,8 +36,10 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<target>
+						<!-- Remember: this will be evaluated in the children projects 
+							so the relative path should be specified according to the children projects-->
 						<file>
-							${project.basedir}/../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.targetplatform/io.github.lorenzobettini.xtextutils.targetplatform.target
+							${project.basedir}/../../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.targetplatform/io.github.lorenzobettini.xtextutils.targetplatform.target
 						</file>
 					</target>
 				</configuration>
