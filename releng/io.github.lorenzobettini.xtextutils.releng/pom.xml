@@ -138,10 +138,15 @@
 				master branch, but the branch can be configured with properties -->
 			<id>useJenkinsShapshots</id>
 			<activation>
-				<!-- Activated when the system property "SKIP-MILESTONES" is not defined at
-					all, thus, implicitly active by default -->
+				<!--
+					To automatically activate this profile, without touching the build commands
+					simply replace the 'withJenkinsSnapshots'
+					with something like '!SKIP-MILESTONES' and the profile will be
+					automatically active by default because SKIP-MILESTONES is not defined at all.
+					Of course, then remember to go back to the original property name.
+				-->
 				<property>
-					<name>!SKIP-MILESTONES</name>
+					<name>withJenkinsSnapshots</name>
 				</property>
 			</activation>
 			<properties>
