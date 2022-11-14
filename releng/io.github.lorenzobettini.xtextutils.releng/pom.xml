@@ -137,13 +137,28 @@
 				Xtext Jenkins latest successful builds. The repositories default to
 				master branch, but the branch can be configured with properties -->
 			<id>useJenkinsShapshots</id>
+			<activation>
+				<!--
+					To automatically activate this profile, without touching the build commands
+					simply replace the 'withJenkinsSnapshots'
+					with something like '!SKIP-MILESTONES' and the profile will be
+					automatically active by default because SKIP-MILESTONES is not defined at all.
+					Of course, then remember to go back to the original property name.
+				-->
+				<property>
+					<name>withJenkinsSnapshots</name>
+				</property>
+			</activation>
 			<properties>
+				<xtextVersion>2.29.0-SNAPSHOT</xtextVersion>
+				<mwe2Version>2.14.0-SNAPSHOT</mwe2Version>
 				<jenkins-xtext-core-branch>master</jenkins-xtext-core-branch>
 				<jenkins-xtext-maven-branch>master</jenkins-xtext-maven-branch>
 				<jenkins-xtext-xtend-branch>master</jenkins-xtext-xtend-branch>
 				<jenkins-xtext-extras-branch>master</jenkins-xtext-extras-branch>
 				<jenkins-xtext-web-branch>master</jenkins-xtext-web-branch>
 				<jenkins-xtext-lib-branch>master</jenkins-xtext-lib-branch>
+				<jenkins-mwe2-branch>master</jenkins-mwe2-branch>
 			</properties>
 			<repositories>
 				<repository>
@@ -212,6 +227,17 @@
 						<enabled>true</enabled>
 					</snapshots>
 				</repository>
+				<repository>
+					<id>custom-mwe2</id>
+					<name>Custom MWE2</name>
+					<url>https://ci.eclipse.org/mwe/job/mwe2/job/${jenkins-mwe2-branch}/lastSuccessfulBuild/artifact/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
 			</repositories>
 			<pluginRepositories>
 				<pluginRepository>
@@ -273,6 +299,17 @@
 					<id>custom-xtext-lib</id>
 					<name>Custom Xtext Lib</name>
 					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>custom-mwe2</id>
+					<name>Custom MWE2</name>
+					<url>https://ci.eclipse.org/mwe/job/mwe2/job/${jenkins-mwe2-branch}/lastSuccessfulBuild/artifact/</url>
 					<releases>
 						<enabled>false</enabled>
 					</releases>
