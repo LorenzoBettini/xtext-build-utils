@@ -19,10 +19,26 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
 						<phase>generate-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<arguments>
+								<argument>/${project.basedir}/${mwe2-file}</argument>
+								<argument>-p</argument>
+								<argument>rootPath=/${project.basedir}/..</argument>
+							</arguments>
+							<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
+							<classpathScope>compile</classpathScope>
+							<!-- we don't use includePluginDependencies since Tycho 2.4.0
+								handles additional.bundles in build.properties correctly -->
+							<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
