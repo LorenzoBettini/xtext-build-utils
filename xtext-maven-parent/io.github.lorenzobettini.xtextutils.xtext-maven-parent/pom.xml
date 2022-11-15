@@ -137,12 +137,18 @@
 								<skip>true</skip> <!-- configured but not enabled, see profile mwe2-launcher -->
 								<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 								<classpathScope>compile</classpathScope>
-								<!-- we don't use includePluginDependencies since Tycho 2.4.0
-									handles additional.bundles in build.properties correctly -->
+								<includePluginDependencies>true</includePluginDependencies>
 								<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 							</configuration>
 						</execution>
 					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+							<version>${xtextVersion}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<!-- configured but not enabled, see profile xtend-compile -->
