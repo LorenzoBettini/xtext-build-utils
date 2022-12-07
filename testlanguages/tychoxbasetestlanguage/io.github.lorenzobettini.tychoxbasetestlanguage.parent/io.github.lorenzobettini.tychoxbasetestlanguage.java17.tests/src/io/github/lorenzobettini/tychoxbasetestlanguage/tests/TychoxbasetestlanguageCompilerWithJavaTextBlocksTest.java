@@ -27,6 +27,9 @@ import com.google.inject.Inject;
 @RunWith(XtextRunner.class)
 @InjectWith(TychoxbasetestlanguageInjectorProvider.class)
 public class TychoxbasetestlanguageCompilerWithJavaTextBlocksTest {
+
+	private static final boolean OS_WINDOWS = System.getProperty("os.name").startsWith("Windows");
+
 	@Rule
 	@Inject
 	public TemporaryFolder temporaryFolder;
@@ -60,7 +63,7 @@ public class TychoxbasetestlanguageCompilerWithJavaTextBlocksTest {
 					  }
 					}
 					""",
-					it.getSingleGeneratedCode());
+					removeCR(it.getSingleGeneratedCode()));
 				try {
 					final Object obj = it.getCompiledClass().getDeclaredConstructor().newInstance();
 					assertEquals("Hello", reflectExtensions.invoke(obj, "toString"));
@@ -68,5 +71,18 @@ public class TychoxbasetestlanguageCompilerWithJavaTextBlocksTest {
 					throw sneakyThrow(e);
 				}
 			});
+	}
+
+	/**
+	 * Makes sure that there are no OS dependent line endings,
+	 * for example CR on Windows.
+	 * 
+	 * @param s
+	 * @return
+	 */
+	private String removeCR(String s) {
+		if (!OS_WINDOWS)
+			return s;
+		return s.replace("\r", "");
 	}
 }
