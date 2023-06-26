@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>releng</artifactId>
-		<version>0.11.0-SNAPSHOT</version>
+		<version>0.12.0-SNAPSHOT</version>
 		<relativePath>../../releng/io.github.lorenzobettini.xtextutils.releng</relativePath>
 	</parent>
 	<artifactId>xtext-maven-parent</artifactId>
@@ -15,14 +15,19 @@
 	<description>An Xtext Parent POM for building Xtext DSLs as pure Maven projects.</description>
 
 	<properties>
-		<!-- overridable properties of used plugins -->
-		<build-helper-maven-plugin-version>3.2.0</build-helper-maven-plugin-version>
+		<!--
+			overridable properties of used plugins
+			
+			To check for updates: mvn versions:display-property-updates
+			To update them: mvn versions:update-properties
+		-->
+		<build-helper-maven-plugin-version>3.4.0</build-helper-maven-plugin-version>
 		<exec-maven-plugin-version>3.1.0</exec-maven-plugin-version>
-		<maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
-		<maven-antrun-plugin-version>3.0.0</maven-antrun-plugin-version>
-		<maven-resources-plugin-version>3.2.0</maven-resources-plugin-version>
+		<maven-surefire-plugin-version>3.1.2</maven-surefire-plugin-version>
+		<maven-antrun-plugin-version>3.1.0</maven-antrun-plugin-version>
+		<maven-resources-plugin-version>3.3.1</maven-resources-plugin-version>
 		<maven-clean-plugin-version>3.2.0</maven-clean-plugin-version>
-		<jacoco-maven-plugin-version>0.8.7</jacoco-maven-plugin-version>
+		<jacoco-maven-plugin-version>0.8.10</jacoco-maven-plugin-version>
 		<!-- Define overridable properties for maven-surefire-plugin -->
 		<systemProperties></systemProperties>
 		<additionalTestArguments></additionalTestArguments>

@@ -8,6 +8,8 @@ logs.zip
 *.smap
 *.log
 
+pom.xml.versionsBackup
+
 # POMless projects
 .polyglot.*
 
