@@ -24,6 +24,8 @@
 			<repository location="https://download.itemis.com/updates/releases/2.1.1/"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.hamcrest" version="0.0.0"/>
+			<unit id="org.hamcrest.core" version="0.0.0"/>
 			<unit id="org.apiguardian.api" version="0.0.0"/>
 			<unit id="junit-jupiter-api" version="0.0.0"/>
 			<unit id="junit-jupiter-engine" version="0.0.0"/>
