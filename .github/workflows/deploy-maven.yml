@@ -29,6 +29,10 @@ jobs:
           !**/*edelta*
         key: ${{ runner.os }}-maven-deploy-${{ hashFiles('**/*.target', '**/pom.xml') }}
         restore-keys: ${{ runner.os }}-maven-deploy-
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.5
     - name: Remove SNAPSHOT
       run: ./removeSnapshots.sh
     - name: Publish to Apache Maven Central

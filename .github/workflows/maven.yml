@@ -46,6 +46,10 @@ jobs:
       run: |
         echo "maven_arguments='--offline'" >> $GITHUB_ENV
       if: steps.m2cache.outputs.cache-hit == 'true' # note the use of the id 'm2cache'
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.5
     - name: Show version
       run: mvn --version
     - name: Run Tycho Test Language using our POMs
