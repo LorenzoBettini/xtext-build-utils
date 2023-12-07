@@ -45,8 +45,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<nexus-staging-url>https://s01.oss.sonatype.org/</nexus-staging-url>
-		<xtextVersion>2.32.0</xtextVersion>
-		<mwe2Version>2.15.0</mwe2Version>
+		<xtextVersion>2.33.0</xtextVersion>
+		<mwe2Version>2.16.0</mwe2Version>
 	</properties>
 
 	<dependencyManagement>
