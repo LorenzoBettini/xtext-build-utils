@@ -52,8 +52,8 @@ jobs:
         echo "maven_arguments='--offline'" | Out-File -FilePath $env:GITHUB_ENV -Append
       # In Windows the syntax for setting environment variable is different
       if: steps.m2cache.outputs.cache-hit == 'true' && runner.os == 'Windows'
-    - name: Install our POMs
-      run: mvn --show-version ${{ env.maven_arguments }} -f releng/io.github.lorenzobettini.xtextutils.releng/pom.xml clean install
+    - name: Show version
+      run: mvn --version
     - name: Run Tycho Test Language using our POMs
       run: mvn ${{ env.maven_arguments }} -U -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
