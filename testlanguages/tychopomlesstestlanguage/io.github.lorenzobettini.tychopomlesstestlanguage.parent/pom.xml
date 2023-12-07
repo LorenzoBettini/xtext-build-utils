@@ -6,6 +6,7 @@
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>xtext-tycho-parent</artifactId>
 		<version>0.13.0-SNAPSHOT</version>
+		<relativePath>../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent/</relativePath>
 	</parent>
 	<groupId>io.github.lorenzobettini.tychopomlesstestlanguage</groupId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -14,8 +15,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 	<modules>
 		<module>io.github.lorenzobettini.tychopomlesstestlanguage</module>

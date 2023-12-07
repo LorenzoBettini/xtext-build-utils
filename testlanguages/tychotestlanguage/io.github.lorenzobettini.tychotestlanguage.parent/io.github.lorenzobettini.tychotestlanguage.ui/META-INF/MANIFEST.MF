@@ -17,7 +17,7 @@ Require-Bundle: io.github.lorenzobettini.tychotestlanguage,
  org.eclipse.compare,
  org.eclipse.xtext.builder
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: io.github.lorenzobettini.tychotestlanguage.ui.internal,
  io.github.lorenzobettini.tychotestlanguage.ui.contentassist,
  io.github.lorenzobettini.tychotestlanguage.ui.quickfix

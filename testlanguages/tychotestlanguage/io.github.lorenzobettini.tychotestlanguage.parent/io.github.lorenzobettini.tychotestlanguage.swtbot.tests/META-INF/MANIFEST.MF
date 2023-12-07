@@ -5,7 +5,7 @@ Bundle-SymbolicName: io.github.lorenzobettini.tychotestlanguage.swtbot.tests;sin
 Bundle-Version: 1.0.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Lorenzo Bettini
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.swtbot.go,
  io.github.lorenzobettini.tychotestlanguage.ui;bundle-version="1.0.0",
  org.eclipse.core.resources;bundle-version="3.14.0",

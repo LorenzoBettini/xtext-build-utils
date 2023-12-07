@@ -20,7 +20,7 @@ Require-Bundle: io.github.lorenzobettini.tychoxbasetestlanguage,
  org.eclipse.jdt.debug.ui,
  org.eclipse.xtext.common.types.ui
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: io.github.lorenzobettini.tychoxbasetestlanguage.ui.quickfix,
  io.github.lorenzobettini.tychoxbasetestlanguage.ui.editor,
  io.github.lorenzobettini.tychoxbasetestlanguage.ui.internal,

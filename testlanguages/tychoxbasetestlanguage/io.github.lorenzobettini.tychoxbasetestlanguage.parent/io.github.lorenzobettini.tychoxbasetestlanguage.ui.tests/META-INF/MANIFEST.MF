@@ -17,5 +17,5 @@ Require-Bundle: io.github.lorenzobettini.tychoxbasetestlanguage.ui,
  org.eclipse.ui.workbench;resolution:=optional,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.xbase.ui.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: io.github.lorenzobettini.tychoxbasetestlanguage.ui.tests;x-internal=true
