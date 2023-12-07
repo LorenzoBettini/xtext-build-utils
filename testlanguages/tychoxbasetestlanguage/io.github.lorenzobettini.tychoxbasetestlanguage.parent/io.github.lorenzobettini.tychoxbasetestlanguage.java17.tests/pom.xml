@@ -15,22 +15,4 @@
 		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<!-- Although the "xtend-gen" profile would be activated
-					thanks to the presence of the "xtend-gen" folder, we
-					have to configure explicitly the xtend-maven-plugin with
-					Java version 8, since by default the plugin takes it from
-					maven.compiler.source, which is 15 in this project and which
-					is not supported by the plugin -->
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-				<configuration>
-					<javaSourceVersion>11</javaSourceVersion>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>
