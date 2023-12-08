@@ -46,10 +46,14 @@ jobs:
       run: |
         echo "maven_arguments='--offline'" >> $GITHUB_ENV
       if: steps.m2cache.outputs.cache-hit == 'true' # note the use of the id 'm2cache'
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.5
     - name: Show version
       run: mvn --version
     - name: Run Tycho Test Language using our POMs
-      run: xvfb-run mvn ${{ env.maven_arguments }} -U -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify
+      run: xvfb-run mvn ${{ env.maven_arguments }} -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify
     - name: Run it again without source code generation (MWE2 and Xtend are skipped)
       run: xvfb-run mvn ${{ env.maven_arguments }} -f testlanguages/tychotestlanguage/io.github.lorenzobettini.tychotestlanguage.parent/pom.xml clean verify -DskipMWE2 -DskipXtend
     - name: Run Pure Maven Test Language using our POMs (with JaCoCo)
