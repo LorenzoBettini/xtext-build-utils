@@ -47,6 +47,15 @@
 		<nexus-staging-url>https://s01.oss.sonatype.org/</nexus-staging-url>
 		<xtextVersion>2.34.0</xtextVersion>
 		<mwe2Version>2.17.0</mwe2Version>
+		<maven-enforcer-plugin-version>3.4.1</maven-enforcer-plugin-version>
+		<versions-maven-plugin-version>2.16.2</versions-maven-plugin-version>
+		<maven-dependency-plugin-version>3.6.1</maven-dependency-plugin-version>
+		<maven-deploy-plugin-version>3.1.1</maven-deploy-plugin-version>
+		<maven-install-plugin-version>3.1.1</maven-install-plugin-version>
+		<maven-site-plugin-version>4.0.0-M13</maven-site-plugin-version>
+		<nexus-staging-maven-plugin-version>1.6.13</nexus-staging-maven-plugin-version>
+		<maven-javadoc-plugin-version>3.6.3</maven-javadoc-plugin-version>
+		<maven-gpg-plugin-version>3.1.0</maven-gpg-plugin-version>
 	</properties>
 
 	<dependencyManagement>
@@ -138,212 +147,57 @@
 				</plugins>
 			</build>
 		</profile>
-		<profile>
-			<!-- This profile enables Maven snapshot repositories corresponding to
-				Xtext Jenkins latest successful builds. The repositories default to
-				master branch, but the branch can be configured with properties -->
-			<id>useJenkinsShapshots</id>
-			<activation>
-				<!--
-					To automatically activate this profile, without touching the build commands
-					simply replace the 'withJenkinsSnapshots'
-					with something like '!SKIP-MILESTONES' and the profile will be
-					automatically active by default because SKIP-MILESTONES is not defined at all.
-					Of course, then remember to go back to the original property name.
-				-->
-				<property>
-					<name>withJenkinsSnapshots</name>
-				</property>
-			</activation>
-			<properties>
-				<xtextVersion>2.31.0-SNAPSHOT</xtextVersion>
-				<mwe2Version>2.14.0-SNAPSHOT</mwe2Version>
-				<jenkins-xtext-core-branch>master</jenkins-xtext-core-branch>
-				<jenkins-xtext-maven-branch>master</jenkins-xtext-maven-branch>
-				<jenkins-xtext-xtend-branch>master</jenkins-xtext-xtend-branch>
-				<jenkins-xtext-extras-branch>master</jenkins-xtext-extras-branch>
-				<jenkins-xtext-web-branch>master</jenkins-xtext-web-branch>
-				<jenkins-xtext-lib-branch>master</jenkins-xtext-lib-branch>
-				<jenkins-mwe2-branch>master</jenkins-mwe2-branch>
-			</properties>
-			<repositories>
-				<repository>
-					<id>custom-xtext-core</id>
-					<name>Custom Xtext Core</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-core/job/${jenkins-xtext-core-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>custom-xtext-maven</id>
-					<name>Custom Xtext Maven</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/${jenkins-xtext-maven-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>custom-xtext-xtend</id>
-					<name>Custom Xtext Xtend</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/${jenkins-xtext-xtend-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>custom-xtext-extras</id>
-					<name>Custom Xtext Extras</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/${jenkins-xtext-extras-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>custom-xtext-web</id>
-					<name>Custom Xtext Web</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-web/job/${jenkins-xtext-web-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>custom-xtext-lib</id>
-					<name>Custom Xtext Lib</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>custom-mwe2</id>
-					<name>Custom MWE2</name>
-					<url>https://ci.eclipse.org/mwe/job/mwe2/job/${jenkins-mwe2-branch}/lastSuccessfulBuild/artifact/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>custom-xtext-core</id>
-					<name>Custom Xtext Core</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-core/job/${jenkins-xtext-core-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>custom-xtext-maven</id>
-					<name>Custom Xtext Maven</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-maven/job/${jenkins-xtext-maven-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>custom-xtext-xtend</id>
-					<name>Custom Xtext Xtend</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-xtend/job/${jenkins-xtext-xtend-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>custom-xtext-extras</id>
-					<name>Custom Xtext Extras</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-extras/job/${jenkins-xtext-extras-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>custom-xtext-web</id>
-					<name>Custom Xtext Web</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-web/job/${jenkins-xtext-web-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>custom-xtext-lib</id>
-					<name>Custom Xtext Lib</name>
-					<url>https://ci.eclipse.org/xtext/job/xtext-lib/job/${jenkins-xtext-lib-branch}/lastSuccessfulBuild/artifact/build/maven-repository/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>custom-mwe2</id>
-					<name>Custom MWE2</name>
-					<url>https://ci.eclipse.org/mwe/job/mwe2/job/${jenkins-mwe2-branch}/lastSuccessfulBuild/artifact/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
 	</profiles>
 
 	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin-version}</version>
+					<executions>
+						<execution>
+							<id>enforce-maven-version</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireMavenVersion>
+										<version>3.9.5</version>
+									</requireMavenVersion>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<!-- mvn versions:set -DartifactId='*' -DgenerateBackupPoms=false -DremoveSnapshot=true -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.7</version>
+					<version>${versions-maven-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>3.3.0</version>
+					<version>${maven-dependency-plugin-version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin-version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin-version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven-site-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.13</version>
+					<version>${nexus-staging-maven-plugin-version}</version>
 					<extensions>true</extensions>
 					<configuration>
 						<serverId>ossrh</serverId>
@@ -354,7 +208,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.3.1</version>
+					<version>${maven-javadoc-plugin-version}</version>
 					<executions>
 						<execution>
 							<id>attach-javadocs</id>
@@ -372,7 +226,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>${maven-gpg-plugin-version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
