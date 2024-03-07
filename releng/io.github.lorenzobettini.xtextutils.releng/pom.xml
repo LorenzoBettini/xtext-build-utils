@@ -47,6 +47,15 @@
 		<nexus-staging-url>https://s01.oss.sonatype.org/</nexus-staging-url>
 		<xtextVersion>2.34.0</xtextVersion>
 		<mwe2Version>2.17.0</mwe2Version>
+		<maven-enforcer-plugin-version>3.4.1</maven-enforcer-plugin-version>
+		<versions-maven-plugin-version>2.7</versions-maven-plugin-version>
+		<maven-dependency-plugin-version>3.3.0</maven-dependency-plugin-version>
+		<maven-deploy-plugin-version>3.1.1</maven-deploy-plugin-version>
+		<maven-install-plugin-version>3.1.1</maven-install-plugin-version>
+		<maven-site-plugin-version>4.0.0-M13</maven-site-plugin-version>
+		<nexus-staging-maven-plugin-version>1.6.13</nexus-staging-maven-plugin-version>
+		<maven-javadoc-plugin-version>3.3.1</maven-javadoc-plugin-version>
+		<maven-gpg-plugin-version>3.0.1</maven-gpg-plugin-version>
 	</properties>
 
 	<dependencyManagement>
@@ -146,7 +155,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>3.4.1</version>
+					<version>${maven-enforcer-plugin-version}</version>
 					<executions>
 						<execution>
 							<id>enforce-maven-version</id>
@@ -167,28 +176,28 @@
 					<!-- mvn versions:set -DartifactId='*' -DgenerateBackupPoms=false -DremoveSnapshot=true -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.7</version>
+					<version>${versions-maven-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>3.3.0</version>
+					<version>${maven-dependency-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.1.1</version>
+					<version>${maven-deploy-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>3.1.1</version>
+					<version>${maven-install-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>4.0.0-M13</version>
+					<version>${maven-site-plugin-version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.13</version>
+					<version>${nexus-staging-maven-plugin-version}</version>
 					<extensions>true</extensions>
 					<configuration>
 						<serverId>ossrh</serverId>
@@ -199,7 +208,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.3.1</version>
+					<version>${maven-javadoc-plugin-version}</version>
 					<executions>
 						<execution>
 							<id>attach-javadocs</id>
@@ -217,7 +226,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>${maven-gpg-plugin-version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
