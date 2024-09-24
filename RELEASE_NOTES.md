@@ -5,6 +5,7 @@ This page describes the noteworthy improvements each release provides and possib
 ## 0.17.0
 
 * Xtext 2.36.0, MWE2 2.19.0, Eclipse 2024-09
+* Tycho 4.0.9
 
 ### Manual changes
 
