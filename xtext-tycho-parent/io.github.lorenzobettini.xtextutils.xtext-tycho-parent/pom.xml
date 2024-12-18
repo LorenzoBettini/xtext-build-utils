@@ -26,7 +26,7 @@
 
 	<properties>
 		<!-- Tycho settings -->
-		<tycho-version>4.0.9</tycho-version>
+		<tycho-version>4.0.10</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
