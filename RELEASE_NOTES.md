@@ -2,6 +2,14 @@
 
 This page describes the noteworthy improvements each release provides and possible required manual changes to be applied.
 
+## 0.18.0
+
+* Xtext 2.37.0, MWE2 2.20.0, Eclipse 2024-12
+
+### Manual changes
+
+* Use `org.eclipse.xtext.xtext.generator.dependencies` in the `build.properties` of the DSL project in `additional.bundles` removing all the listed dependencies the wizard used to generate.
+
 ## 0.17.0
 
 * Xtext 2.36.0, MWE2 2.19.0, Eclipse 2024-09
