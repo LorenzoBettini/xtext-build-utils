@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ 17 ]
+        java: [ 21 ]
 # This is not requested anymore, thanks to Google Guice 5
 #        include:
 #          - java: 17
