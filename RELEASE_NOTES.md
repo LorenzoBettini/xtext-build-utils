@@ -1,6 +1,6 @@
 # Xtext Build Utils: Release notes
 
-This page describes the noteworthy improvements each release provides and possible required manual changes to be applied.
+This page describes each release's noteworthy improvements and possible required manual changes to be applied.
 
 ## 0.19.0
 
@@ -11,6 +11,7 @@ This page describes the noteworthy improvements each release provides and possib
     ```
     in the `.target` file.
 * Tycho 4.0.12
+* https://github.com/LorenzoBettini/xtext-build-utils/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.19.0
 
 ## 0.18.0
 
