@@ -2,6 +2,10 @@
 
 This page describes the noteworthy improvements each release provides and possible required manual changes to be applied.
 
+## 0.19.0
+
+* Tycho 4.0.12
+
 ## 0.18.0
 
 * Xtext 2.37.0, MWE2 2.20.0, Eclipse 2024-12
