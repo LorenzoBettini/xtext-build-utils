@@ -1,7 +1,8 @@
 version: 2
 updates:
   - package-ecosystem: "maven"
-    directory: "/releng/io.github.lorenzobettini.xtextutils.releng"
+    directories:
+      - "xtext-maven-parent/io.github.lorenzobettini.xtextutils.xtext-maven-parent"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
