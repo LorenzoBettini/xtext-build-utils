@@ -4,6 +4,12 @@ This page describes the noteworthy improvements each release provides and possib
 
 ## 0.19.0
 
+* Xtext 2.38.0, MWE2 2.21.0, Eclipse 2025-03
+  * Remember to add
+    ```xml
+    <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
+    ```
+    in the `.target` file.
 * Tycho 4.0.12
 
 ## 0.18.0
