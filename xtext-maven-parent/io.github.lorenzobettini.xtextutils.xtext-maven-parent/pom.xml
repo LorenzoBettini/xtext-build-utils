@@ -22,7 +22,7 @@
 			To update them: mvn versions:update-properties
 		-->
 		<build-helper-maven-plugin-version>3.5.0</build-helper-maven-plugin-version>
-		<exec-maven-plugin-version>3.5.0</exec-maven-plugin-version>
+		<exec-maven-plugin-version>3.5.1</exec-maven-plugin-version>
 		<maven-surefire-plugin-version>3.5.3</maven-surefire-plugin-version>
 		<maven-antrun-plugin-version>3.1.0</maven-antrun-plugin-version>
 		<maven-resources-plugin-version>3.3.1</maven-resources-plugin-version>
