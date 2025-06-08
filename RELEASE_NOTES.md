@@ -2,6 +2,11 @@
 
 This page describes each release's noteworthy improvements and possible required manual changes to be applied.
 
+## 0.20.0
+
+* Deploy to the new Central repository
+* https://github.com/LorenzoBettini/xtext-build-utils/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.20.0
+
 ## 0.19.0
 
 * Xtext 2.38.0, MWE2 2.21.0, Eclipse 2025-03
