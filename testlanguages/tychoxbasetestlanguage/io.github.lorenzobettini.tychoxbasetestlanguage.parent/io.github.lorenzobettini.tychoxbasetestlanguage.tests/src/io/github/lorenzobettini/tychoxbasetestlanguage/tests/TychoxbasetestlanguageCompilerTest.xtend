@@ -5,14 +5,15 @@ package io.github.lorenzobettini.tychoxbasetestlanguage.tests
 
 import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.TemporaryFolder
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.xbase.lib.util.ReflectExtensions
 import org.eclipse.xtext.xbase.testing.CompilationTestHelper
-import org.eclipse.xtext.xbase.testing.TemporaryFolder
-import static org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
+import static org.junit.Assert.assertEquals
 
 @RunWith(XtextRunner)
 @InjectWith(TychoxbasetestlanguageInjectorProvider)

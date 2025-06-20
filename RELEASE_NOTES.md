@@ -4,6 +4,7 @@ This page describes each release's noteworthy improvements and possible required
 
 ## 0.21.0
 
+* Xtext 2.39.0, MWE2 2.22.0, Eclipse 2025-06
 * Tycho 4.0.13
 * https://github.com/LorenzoBettini/xtext-build-utils/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.21.0
 

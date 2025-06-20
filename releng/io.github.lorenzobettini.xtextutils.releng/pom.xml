@@ -44,8 +44,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtextVersion>2.38.0</xtextVersion>
-		<mwe2Version>2.21.0</mwe2Version>
+		<xtextVersion>2.39.0</xtextVersion>
+		<mwe2Version>2.22.0</mwe2Version>
 		<maven-enforcer-plugin-version>3.5.0</maven-enforcer-plugin-version>
 		<versions-maven-plugin-version>2.16.2</versions-maven-plugin-version>
 		<maven-dependency-plugin-version>3.8.1</maven-dependency-plugin-version>
