@@ -80,7 +80,7 @@ jobs:
     - name: Run Tycho POMless Language using our POMs
       run: xvfb-run mvn ${{ env.maven_arguments }} -f testlanguages/tychopomlesstestlanguage/io.github.lorenzobettini.tychopomlesstestlanguage.parent/pom.xml clean verify
     - name: Archive p2 Repositories
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: matrix.java == '11'
       with:
         name: p2-repositories
