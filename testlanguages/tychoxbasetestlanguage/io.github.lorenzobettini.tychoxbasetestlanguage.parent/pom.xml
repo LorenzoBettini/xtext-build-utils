@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>io.github.lorenzobettini.xtextutils</groupId>
 		<artifactId>xtext-tycho-parent</artifactId>
-		<version>0.21.0-SNAPSHOT</version>
+		<version>0.22.0-SNAPSHOT</version>
 		<relativePath>../../../xtext-tycho-parent/io.github.lorenzobettini.xtextutils.xtext-tycho-parent/</relativePath>
 	</parent>
 	<groupId>io.github.lorenzobettini.tychoxbasetestlanguage</groupId>
