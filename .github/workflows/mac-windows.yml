@@ -55,7 +55,7 @@ jobs:
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
-        maven-version: 3.9.5
+        maven-version: 3.9.9
     - name: Show version
       run: mvn --version
     - name: Run Tycho Test Language using our POMs
