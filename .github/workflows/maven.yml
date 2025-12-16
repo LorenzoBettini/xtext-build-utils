@@ -32,8 +32,8 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
         distribution: temurin
-    - name: Cache Maven packages
-      uses: actions/cache@v5
+    - name: Restore cache
+      uses: actions/cache/restore@v5
       id: m2cache # note the cache id, see below for cache-hit
       with:
         path: |
@@ -79,9 +79,29 @@ jobs:
          -Pjacoco
     - name: Run Tycho POMless Language using our POMs
       run: xvfb-run mvn ${{ env.maven_arguments }} -f testlanguages/tychopomlesstestlanguage/io.github.lorenzobettini.tychopomlesstestlanguage.parent/pom.xml clean verify
+    - name: Save cache
+      uses: actions/cache/save@v5
+      if: always()
+      with:
+        path: |
+          ~/.m2
+          !~/.m2/**/*lorenzobettini*
+        key: ${{ runner.os }}-m2-java-${{ matrix.java }}-${{ hashFiles('**/pom.xml', '**/*.target') }}
     - name: Archive p2 Repositories
       uses: actions/upload-artifact@v6
       if: matrix.java == '11'
       with:
         name: p2-repositories
         path: '**/target/repository'
+    - name: Archive Test Results
+      uses: actions/upload-artifact@v6
+      if: always()
+      with:
+        name: test-results-${{ runner.os }}
+        path: '**/target/surefire-reports'
+    - name: Archive Logs
+      uses: actions/upload-artifact@v6
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: logs-${{ runner.os }}
+        path: '**/target/**/*.log'
