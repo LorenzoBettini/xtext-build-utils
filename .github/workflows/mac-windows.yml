@@ -80,3 +80,15 @@ jobs:
          -Pjacoco
     - name: Run Tycho POMless Language using our POMs
       run: mvn ${{ env.maven_arguments }} -f testlanguages/tychopomlesstestlanguage/io.github.lorenzobettini.tychopomlesstestlanguage.parent/pom.xml clean verify
+    - name: Archive Test Results
+      uses: actions/upload-artifact@v6
+      if: always()
+      with:
+        name: test-results-${{ runner.os }}
+        path: '**/target/surefire-reports'
+    - name: Archive Logs
+      uses: actions/upload-artifact@v6
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: logs-${{ runner.os }}
+        path: '**/target/**/*.log'
