@@ -151,7 +151,7 @@
 				</plugin>
 				<plugin>
 					<!-- configured but not enabled, see profile xtend-compile -->
-					<groupId>org.eclipse.xtend</groupId>
+					<groupId>org.eclipse.xtext</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
 					<version>${xtextVersion}</version>
 				</plugin>
@@ -343,7 +343,7 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.eclipse.xtend</groupId>
+							<groupId>org.eclipse.xtext</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
 							<version>${xtextVersion}</version>
 							<executions>
@@ -406,7 +406,7 @@
 					<plugin>
 						<!-- enabled unless another profile disables xtend-maven-plugin,
 							see profile xtend-compile -->
-						<groupId>org.eclipse.xtend</groupId>
+						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>xtend-maven-plugin</artifactId>
 					</plugin>
 				</plugins>
@@ -426,7 +426,7 @@
 					<plugin>
 						<!-- enabled unless another profile disables xtend-maven-plugin,
 							see profile xtend-compile -->
-						<groupId>org.eclipse.xtend</groupId>
+						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>xtend-maven-plugin</artifactId>
 					</plugin>
 				</plugins>
@@ -447,7 +447,7 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.eclipse.xtend</groupId>
+							<groupId>org.eclipse.xtext</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
 							<configuration>
 								<xtendAsPrimaryDebugSource>true</xtendAsPrimaryDebugSource>
