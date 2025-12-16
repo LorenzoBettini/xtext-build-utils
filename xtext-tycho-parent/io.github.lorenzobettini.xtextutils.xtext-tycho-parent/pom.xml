@@ -253,7 +253,7 @@
 								since usually for Eclipse plug-in projects
 								tests are in their own projects (with only
 								tests) -->
-							<groupId>org.eclipse.xtend</groupId>
+							<groupId>org.eclipse.xtext</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
 							<version>${xtextVersion}</version>
 							<executions>
@@ -304,7 +304,7 @@
 					<plugin>
 						<!-- enabled unless another profile disables xtend-maven-plugin,
 							see profile xtend-compile -->
-						<groupId>org.eclipse.xtend</groupId>
+						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>xtend-maven-plugin</artifactId>
 					</plugin>
 				</plugins>

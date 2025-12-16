@@ -30,7 +30,7 @@
 				though it would be activated automatically by the profiles "xtend-gen":
 				we must make sure it runs AFTER the execution of MWE2 -->
 			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
+				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
