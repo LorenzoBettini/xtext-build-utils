@@ -88,19 +88,19 @@ jobs:
           !~/.m2/**/*lorenzobettini*
         key: ${{ runner.os }}-m2-java-${{ matrix.java }}-${{ hashFiles('**/pom.xml', '**/*.target') }}
     - name: Archive p2 Repositories
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: matrix.java == '11'
       with:
         name: p2-repositories
         path: '**/target/repository'
     - name: Archive Test Results
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: always()
       with:
         name: test-results-${{ runner.os }}
         path: '**/target/surefire-reports'
     - name: Archive Logs
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
