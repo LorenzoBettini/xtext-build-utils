@@ -2,6 +2,18 @@
 
 This page describes each release's noteworthy improvements and possible required manual changes to be applied.
 
+## 0.23.0
+
+* Xtext 2.41.0, MWE2 2.24.0, Eclipse 2025-12
+* Tycho 5.0.1 (Use the `org.eclipse.tycho:tycho-eclipse-plugin:eclipse-run` instead of the one from extras, which has been removed)
+* https://github.com/LorenzoBettini/xtext-build-utils/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.23.0
+
+## 0.22.0
+
+* Xtext 2.40.0, MWE2 2.23.0, Eclipse 2025-09
+* Tycho 5.0.0
+* https://github.com/LorenzoBettini/xtext-build-utils/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.22.0
+
 ## 0.21.0
 
 * Xtext 2.39.0, MWE2 2.22.0, Eclipse 2025-06
