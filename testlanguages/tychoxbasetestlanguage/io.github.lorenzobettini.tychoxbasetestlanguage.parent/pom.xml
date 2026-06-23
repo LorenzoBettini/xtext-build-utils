@@ -14,8 +14,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
 
 	<modules>
@@ -29,15 +29,6 @@
 	</modules>
 
 	<profiles>
-		<profile>
-			<id>jdk17-or-newer</id>
-			<activation>
-				<jdk>[17,)</jdk>
-			</activation>
-			<modules>
-				<module>io.github.lorenzobettini.tychoxbasetestlanguage.java17.tests</module>
-			</modules>
-		</profile>
 		<!-- example of JaCoCo report, relying on the "jacoco" profile that automatically 
 			runs "prepare-agent" and sets surefire arguments accordingly. -->
 		<profile>
