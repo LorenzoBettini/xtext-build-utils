@@ -33,7 +33,7 @@ jobs:
         java-version: ${{ matrix.java }}
         distribution: temurin
     - name: Restore cache
-      uses: actions/cache/restore@v5
+      uses: actions/cache/restore@v6
       id: m2cache # note the cache id, see below for cache-hit
       with:
         path: |
@@ -80,7 +80,7 @@ jobs:
     - name: Run Tycho POMless Language using our POMs
       run: xvfb-run mvn ${{ env.maven_arguments }} -f testlanguages/tychopomlesstestlanguage/io.github.lorenzobettini.tychopomlesstestlanguage.parent/pom.xml clean verify
     - name: Save cache
-      uses: actions/cache/save@v5
+      uses: actions/cache/save@v6
       if: always()
       with:
         path: |
