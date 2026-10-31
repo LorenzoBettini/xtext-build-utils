@@ -2,6 +2,15 @@
 
 This page describes each release's noteworthy improvements and possible required manual changes to be applied.
 
+## 0.26.0
+
+* Java 25
+* Xtext 2.44.0, MWE2 2.27.0, Eclipse 2026-09
+* Tycho 5.0.4
+* Removed the Xtext web example, which is no longer supported
+* Closed issues: https://github.com/LorenzoBettini/xtext-build-utils/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.26.0
+* Closes PRs: https://github.com/LorenzoBettini/xtext-build-utils/pulls?q=is%3Aissue%20state%3Aclosed%20milestone%3A0.26.0
+
 ## 0.25.0
 
 * Java 21

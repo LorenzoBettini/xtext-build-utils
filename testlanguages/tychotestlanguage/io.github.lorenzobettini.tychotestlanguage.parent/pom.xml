@@ -13,8 +13,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>25</maven.compiler.source>
+		<maven.compiler.target>25</maven.compiler.target>
 	</properties>
 
 	<modules>
@@ -22,7 +22,6 @@
 		<module>io.github.lorenzobettini.tychotestlanguage.maven.tests</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.ide</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.ui</module>
-		<module>io.github.lorenzobettini.tychotestlanguage.web</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.feature</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.repository</module>
 		<module>io.github.lorenzobettini.tychotestlanguage.tests</module>
